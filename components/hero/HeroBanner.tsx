@@ -99,7 +99,7 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
   return (
     <section
       id="home"
-      className="scroll-mt-24 sm:scroll-mt-28 pt-4 sm:pt-6 pb-12 bg-ussh-cream-50"
+      className="scroll-mt-20 sm:scroll-mt-24 pt-3 sm:pt-6 pb-8 sm:pb-12 bg-ussh-cream-50"
       aria-label="Cổng thông tin Inside USSH"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -164,7 +164,7 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
             {/* Hero Image - flex-1 expands to fill 100% of remaining space */}
             <div
               onClick={() => setSelectedArticle(featuredStories[0] || heroArticle)}
-              className="relative z-10 flex-1 w-full min-h-[300px] sm:min-h-[340px] rounded-2xl overflow-hidden shadow-soft border border-white/60 mt-3 cursor-pointer group/img"
+              className="relative z-10 flex-1 w-full min-h-[220px] sm:min-h-[300px] lg:min-h-[340px] rounded-2xl overflow-hidden shadow-soft border border-white/60 mt-3 cursor-pointer group/img"
               title="Nhấp để đọc bài viết tiêu điểm"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}

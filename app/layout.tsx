@@ -1,4 +1,5 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
+
 import './globals.css';
 import { TopAnnouncementBar } from '@/components/layout/TopAnnouncementBar';
 import { Header } from '@/components/layout/Header';
@@ -6,6 +7,17 @@ import { Footer } from '@/components/layout/Footer';
 import { ScrollProgressBar } from '@/components/layout/ScrollProgressBar';
 import { generateOrganizationJsonLd } from '@/lib/seo';
 import { ProjectIntroModal } from '@/components/intro/ProjectIntroModal';
+
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#FDFCF9' },
+    { media: '(prefers-color-scheme: dark)', color: '#0b1120' },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://inside.hcmussh.edu.vn'),
