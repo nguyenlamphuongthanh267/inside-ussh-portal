@@ -228,19 +228,19 @@ export function ProjectIntroModal() {
             onMouseLeave={() => !isMobile && setIsPaused(false)}
             onTouchStart={() => isMobile && setIsPaused(true)}
             onTouchEnd={() => isMobile && setIsPaused(false)}
-            className="relative z-20 w-full sm:max-w-2xl sm:mx-4
+            className="relative z-20 w-full sm:max-w-xl sm:mx-4
               bg-white
-              rounded-t-3xl sm:rounded-3xl
-              shadow-[0_-8px_40px_-4px_rgba(153,0,0,0.25)] sm:shadow-[0_25px_80px_-10px_rgba(153,0,0,0.35)]
+              rounded-t-3xl sm:rounded-2xl
+              shadow-[0_-8px_40px_-4px_rgba(153,0,0,0.25)] sm:shadow-[0_20px_60px_-8px_rgba(153,0,0,0.3)]
               border-t-2 sm:border-2 border-amber-300
               overflow-hidden
               animate-in slide-in-from-bottom sm:zoom-in-95 duration-300
               flex flex-col
-              max-h-[92dvh] sm:max-h-[90vh]
+              max-h-[92dvh] sm:max-h-[88vh]
             "
           >
             {/* Top color bar */}
-            <div className="absolute top-0 left-0 right-0 h-1.5 sm:h-2 bg-gradient-to-r from-red-600 via-amber-400 to-red-600 z-10" />
+            <div className="absolute top-0 left-0 right-0 h-1 sm:h-1.5 bg-gradient-to-r from-red-600 via-amber-400 to-red-600 z-10" />
 
             {/* Mobile drag handle */}
             <div className="flex justify-center pt-3 pb-1 sm:hidden">
@@ -248,60 +248,60 @@ export function ProjectIntroModal() {
             </div>
 
             {/* Scrollable content area */}
-            <div className="overflow-y-auto flex-1 px-5 pt-3 pb-2 sm:px-8 sm:pt-8 sm:pb-4">
+            <div className="overflow-y-auto flex-1 px-4 pt-3 pb-2 sm:px-6 sm:pt-5 sm:pb-3">
 
               {/* Close button */}
               <button
                 onClick={handleClose}
-                className="absolute top-4 right-4 p-1.5 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors z-30 cursor-pointer"
+                className="absolute top-3 right-3 p-1.5 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors z-30 cursor-pointer"
                 aria-label="Đóng"
               >
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4" />
               </button>
 
               {/* Institution Header */}
-              <div className="text-center pb-4 border-b border-amber-200/80">
-                <div className="inline-flex items-center justify-center gap-3 mb-3">
+              <div className="text-center pb-3 border-b border-amber-200/80">
+                <div className="inline-flex items-center justify-center gap-2.5 mb-2">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/images/ussh-logo.png"
                     alt="Logo USSH"
-                    className="w-11 h-11 sm:w-14 sm:h-14 object-contain drop-shadow-sm shrink-0"
+                    className="w-9 h-9 sm:w-11 sm:h-11 object-contain drop-shadow-sm shrink-0"
                   />
                   <div className="text-left">
-                    <div className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-ussh-navy leading-snug">
+                    <div className="text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-ussh-navy leading-snug">
                       ĐHQG-HCM · Trường ĐH Khoa học Xã hội và Nhân văn
                     </div>
-                    <div className="text-xs sm:text-sm font-extrabold text-ussh-accent tracking-wide uppercase mt-0.5">
+                    <div className="text-[10px] sm:text-xs font-extrabold text-ussh-accent tracking-wide uppercase mt-0.5">
                       Khoa Báo Chí & Truyền Thông
                     </div>
                   </div>
                 </div>
 
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-red-50 via-amber-50 to-red-50 border border-amber-300 shadow-sm">
-                  <Sparkles className="w-3.5 h-3.5 text-amber-500 animate-spin" />
-                  <span className="text-[10px] sm:text-xs font-black text-amber-900 tracking-wider uppercase">
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gradient-to-r from-red-50 via-amber-50 to-red-50 border border-amber-300 shadow-sm">
+                  <Sparkles className="w-3 h-3 text-amber-500 animate-spin" />
+                  <span className="text-[9px] sm:text-[10px] font-black text-amber-900 tracking-wider uppercase">
                     Báo cáo thực hành đề án môn học
                   </span>
-                  <Sparkles className="w-3.5 h-3.5 text-amber-500 animate-spin" />
+                  <Sparkles className="w-3 h-3 text-amber-500 animate-spin" />
                 </span>
               </div>
 
               {/* Course & Instructor */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4">
+              <div className="grid grid-cols-2 gap-2 my-3">
                 {/* Course */}
-                <div className="bg-amber-50/80 rounded-2xl p-3.5 sm:p-4 border border-amber-200 flex items-start gap-3 shadow-sm">
-                  <div className="p-2.5 rounded-xl bg-amber-500 text-white shadow-sm shrink-0">
-                    <BookOpen className="w-4 h-4 sm:w-5 sm:h-5" />
+                <div className="bg-amber-50/80 rounded-xl p-2.5 sm:p-3 border border-amber-200 flex items-start gap-2 shadow-sm">
+                  <div className="p-2 rounded-lg bg-amber-500 text-white shadow-sm shrink-0">
+                    <BookOpen className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <div className="text-[10px] uppercase font-extrabold text-slate-500 tracking-wider">Môn học</div>
-                    <div className="text-sm sm:text-base font-black text-ussh-navy leading-tight mt-0.5">
+                    <div className="text-[9px] uppercase font-extrabold text-slate-500 tracking-wider">Môn học</div>
+                    <div className="text-xs sm:text-sm font-black text-ussh-navy leading-tight mt-0.5">
                       Quan hệ công chúng
                     </div>
-                    <div className="mt-1.5 inline-flex items-center gap-1 text-[10px] sm:text-xs font-semibold text-amber-900">
+                    <div className="mt-1 inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold text-amber-900">
                       <span>Mã HP:</span>
-                      <code className="bg-white px-1.5 py-0.5 rounded border border-amber-300 font-mono font-black text-ussh-accent text-[10px] sm:text-xs">
+                      <code className="bg-white px-1 py-0.5 rounded border border-amber-300 font-mono font-black text-ussh-accent text-[9px] sm:text-[10px]">
                         2610BCH088.2L0
                       </code>
                     </div>
@@ -309,16 +309,16 @@ export function ProjectIntroModal() {
                 </div>
 
                 {/* Teacher */}
-                <div className="bg-red-50/80 rounded-2xl p-3.5 sm:p-4 border border-red-200 flex items-start gap-3 shadow-sm">
-                  <div className="p-2.5 rounded-xl bg-ussh-accent text-white shadow-sm shrink-0">
-                    <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5" />
+                <div className="bg-red-50/80 rounded-xl p-2.5 sm:p-3 border border-red-200 flex items-start gap-2 shadow-sm">
+                  <div className="p-2 rounded-lg bg-ussh-accent text-white shadow-sm shrink-0">
+                    <GraduationCap className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <div className="text-[10px] uppercase font-extrabold text-slate-500 tracking-wider">Giảng viên</div>
-                    <div className="text-sm sm:text-base font-black text-red-700 leading-tight mt-0.5">
+                    <div className="text-[9px] uppercase font-extrabold text-slate-500 tracking-wider">Giảng viên</div>
+                    <div className="text-xs sm:text-sm font-black text-red-700 leading-tight mt-0.5">
                       Th.S Vũ Thị Như Quỳnh
                     </div>
-                    <div className="text-[10px] sm:text-xs text-slate-600 font-medium mt-1">
+                    <div className="text-[9px] sm:text-[10px] text-slate-600 font-medium mt-1">
                       Kính gửi cô giáo nghiệm thu đề án
                     </div>
                   </div>
@@ -326,50 +326,50 @@ export function ProjectIntroModal() {
               </div>
 
               {/* Project Title */}
-              <div className="bg-gradient-to-r from-ussh-navy via-slate-800 to-ussh-navy text-white rounded-2xl p-3.5 sm:p-4 text-center mb-4 shadow-lg border border-amber-300/30">
-                <div className="text-[9px] sm:text-xs uppercase tracking-widest text-amber-300 font-black">
+              <div className="bg-gradient-to-r from-ussh-navy via-slate-800 to-ussh-navy text-white rounded-xl p-2.5 sm:p-3 text-center mb-3 shadow-md border border-amber-300/30">
+                <div className="text-[8px] sm:text-[9px] uppercase tracking-widest text-amber-300 font-black">
                   Sản phẩm đề án thực tế
                 </div>
-                <div className="text-sm sm:text-xl font-black tracking-tight mt-1 leading-snug">
+                <div className="text-xs sm:text-base font-black tracking-tight mt-0.5 leading-snug">
                   Bản Tin Nội Bộ &amp; Cổng Thông Tin &ldquo;Inside USSH&rdquo;
                 </div>
               </div>
 
               {/* Team Members */}
               <div>
-                <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                  <div className="flex items-center gap-2">
-                    <Users className="w-4 h-4 text-ussh-accent shrink-0" />
-                    <span className="text-[10px] sm:text-xs uppercase font-black text-slate-700 tracking-wide">Tên nhóm:</span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-red-100 text-red-800 text-[10px] sm:text-xs font-black border border-red-300">
+                <div className="flex flex-wrap items-center justify-between gap-1.5 mb-2">
+                  <div className="flex items-center gap-1.5">
+                    <Users className="w-3.5 h-3.5 text-ussh-accent shrink-0" />
+                    <span className="text-[9px] sm:text-[10px] uppercase font-black text-slate-700 tracking-wide">Tên nhóm:</span>
+                    <span className="px-2 py-0.5 rounded-full bg-red-100 text-red-800 text-[9px] sm:text-[10px] font-black border border-red-300">
                       🐎 Con Ngựa Bá Khí QHCC
                     </span>
                   </div>
-                  <span className="text-[10px] sm:text-xs font-bold text-slate-500">5 thành viên</span>
+                  <span className="text-[9px] sm:text-[10px] font-bold text-slate-500">5 thành viên</span>
                 </div>
 
-                {/* Members Grid — 1 col mobile, 2 col sm+ */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {/* Members Grid — always 2 col */}
+                <div className="grid grid-cols-2 gap-1.5">
                   {MEMBERS.map((m, idx) => (
                     <div
                       key={m.mssv}
-                      className={`flex items-center justify-between p-3 rounded-xl border transition-all ${
+                      className={`flex items-center justify-between p-2 sm:p-2.5 rounded-lg border transition-all ${
                         m.role
                           ? 'bg-amber-50 border-amber-300 ring-1 ring-amber-200/50'
                           : 'bg-slate-50 border-slate-200'
                       }`}
                     >
-                      <div className="flex items-center gap-2.5 min-w-0">
-                        <span className="w-6 h-6 rounded-full bg-ussh-navy text-white text-xs font-black flex items-center justify-center shrink-0">
+                      <div className="flex items-center gap-2 min-w-0">
+                        <span className="w-5 h-5 rounded-full bg-ussh-navy text-white text-[10px] font-black flex items-center justify-center shrink-0">
                           {idx + 1}
                         </span>
                         <div className="truncate">
-                          <div className="text-xs sm:text-sm font-black text-slate-800 truncate">{m.name}</div>
-                          <div className="text-[10px] sm:text-xs text-slate-500 font-mono font-bold">MSSV: {m.mssv}</div>
+                          <div className="text-[10px] sm:text-xs font-black text-slate-800 truncate">{m.name}</div>
+                          <div className="text-[9px] sm:text-[10px] text-slate-500 font-mono font-bold">MSSV: {m.mssv}</div>
                         </div>
                       </div>
                       {m.role && (
-                        <span className="px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-black bg-ussh-accent text-white shrink-0 ml-2">
+                        <span className="px-1.5 py-0.5 rounded text-[8px] sm:text-[9px] font-black bg-ussh-accent text-white shrink-0 ml-1">
                           {m.role}
                         </span>
                       )}
@@ -379,10 +379,10 @@ export function ProjectIntroModal() {
               </div>
             </div>
 
-            {/* Footer — fixed at bottom of modal */}
-            <div className="px-5 sm:px-8 py-3 sm:py-4 border-t border-slate-200 bg-white shrink-0">
+            {/* Footer */}
+            <div className="px-4 sm:px-6 py-2.5 sm:py-3 border-t border-slate-200 bg-white shrink-0">
               {/* Progress bar */}
-              <div className="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden mb-3">
+              <div className="w-full bg-slate-100 rounded-full h-1 overflow-hidden mb-2">
                 <div
                   className="bg-gradient-to-r from-red-600 via-amber-500 to-emerald-500 h-full transition-all duration-75 ease-linear rounded-full"
                   style={{ width: `${progress}%` }}
@@ -390,30 +390,27 @@ export function ProjectIntroModal() {
               </div>
 
               <div className="flex items-center justify-between gap-3">
-                {/* Status text */}
-                <div className="text-[10px] sm:text-xs text-slate-600 min-w-0">
+                <div className="text-[9px] sm:text-[10px] text-slate-600 min-w-0">
                   {isPaused ? (
                     <span className="text-amber-600 font-bold inline-flex items-center gap-1 animate-pulse">
                       <span>⏸</span>
-                      <span className="hidden sm:inline">Đang tạm dừng</span>
-                      <span className="sm:hidden">Giữ...</span>
+                      <span>Đang tạm dừng</span>
                     </span>
                   ) : (
                     <span>
                       Vào website sau{' '}
-                      <strong className="text-ussh-accent font-black text-xs sm:text-sm">{timeLeft}s</strong>
+                      <strong className="text-ussh-accent font-black text-[10px] sm:text-xs">{timeLeft}s</strong>
                       <span className="hidden sm:inline"> · {isMobile ? 'chạm giữ để đọc' : 'rê chuột để dừng'}</span>
                     </span>
                   )}
                 </div>
 
-                {/* CTA button */}
                 <button
                   onClick={handleClose}
-                  className="inline-flex items-center justify-center gap-1.5 px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-ussh-accent to-red-700 hover:from-red-700 hover:to-red-800 text-white text-xs sm:text-sm font-black shadow-md hover:shadow-lg hover:scale-105 transition-all focus:outline-none cursor-pointer whitespace-nowrap shrink-0"
+                  className="inline-flex items-center justify-center gap-1 px-3 sm:px-5 py-1.5 sm:py-2 rounded-lg bg-gradient-to-r from-ussh-accent to-red-700 hover:from-red-700 hover:to-red-800 text-white text-[10px] sm:text-xs font-black shadow-md hover:shadow-lg hover:scale-105 transition-all cursor-pointer whitespace-nowrap shrink-0"
                 >
                   <span>Khám phá ngay</span>
-                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                  <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 </button>
               </div>
             </div>
