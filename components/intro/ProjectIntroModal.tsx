@@ -13,7 +13,7 @@ const MEMBERS: Member[] = [
   { name: 'Nguyễn Thị My', mssv: '2456030049' },
   { name: 'Trần Thảo Quyên', mssv: '2456030083' },
   { name: 'Nguyễn Thị Như Quỳnh', mssv: '2456030085' },
-  { name: 'Nguyễn Lâm Phương Thanh', mssv: '2456030088', role: 'Quản trị viên' },
+  { name: 'Nguyễn Lâm Phương Thanh', mssv: '2456030088' },
   { name: 'Nguyễn Phương Thảo', mssv: '2456030091' },
 ];
 
@@ -229,20 +229,19 @@ export function ProjectIntroModal() {
                   {MEMBERS.map((m, idx) => (
                     <div
                       key={m.mssv}
-                      className={`flex items-center justify-between px-2.5 py-1.5 rounded-lg border ${
-                        m.role ? 'bg-amber-50 border-amber-300' : 'bg-slate-50 border-slate-200'
-                      }`}
+                      className="flex items-center justify-between px-2.5 py-1.5 rounded-lg border bg-slate-50 border-slate-200"
                     >
                       <div className="flex items-center gap-2 min-w-0">
-                        <span className="w-5 h-5 rounded-full bg-ussh-navy text-white text-[10px] font-black flex items-center justify-center shrink-0">{idx + 1}</span>
-                        <div className="truncate">
-                          <div className="text-[10.5px] font-black text-slate-800 truncate">{m.name}</div>
+                        <span className="w-5 h-5 rounded-full bg-ussh-navy text-white text-[10px] font-black flex items-center justify-center shrink-0">
+                          {idx + 1}
+                        </span>
+                        <div className="min-w-0">
+                          <div className="text-[10.5px] font-black text-slate-800 whitespace-nowrap">
+                            {m.name}
+                          </div>
                           <div className="text-[9px] text-slate-400 font-mono">MSSV: {m.mssv}</div>
                         </div>
                       </div>
-                      {m.role && (
-                        <span className="px-1.5 py-0.5 rounded text-[8px] font-black bg-ussh-accent text-white shrink-0 ml-1">{m.role}</span>
-                      )}
                     </div>
                   ))}
                 </div>
