@@ -12,6 +12,35 @@ export interface ArticleReaderModalProps {
   onClose: () => void;
 }
 
+function renderFormattedCaption(captionText?: string) {
+  if (!captionText) return null;
+  const clean = captionText.replace(/^Chú thích ảnh:\s*/i, '').trim();
+
+  // Pattern matching: Description text followed by "Ảnh: ..." or "- Ảnh: ..."
+  const regex = /^(.*?)(?:[\.\s\-–—]*)\s*(\(?Ảnh:\s*[^)]+\)?)$/i;
+  const match = clean.match(regex);
+
+  if (match) {
+    const description = match[1].trim();
+    const credit = match[2].trim();
+    return (
+      <div className="text-[11.5px] text-slate-500 text-center font-normal px-2 space-y-1">
+        <p className="italic leading-relaxed">{description}</p>
+        <p className="not-italic font-semibold text-slate-700 text-[11px] tracking-wide inline-flex items-center justify-center gap-1">
+          <span className="text-slate-400">•</span>
+          <span>{credit}</span>
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <p className="text-[11.5px] italic text-slate-500 text-center font-normal px-2 leading-relaxed">
+      {clean}
+    </p>
+  );
+}
+
 export function ArticleReaderModal({ article, isOpen, onClose }: ArticleReaderModalProps) {
   const [copied, setCopied] = React.useState(false);
 
@@ -120,11 +149,7 @@ export function ArticleReaderModal({ article, isOpen, onClose }: ArticleReaderMo
                 className="w-full max-h-[460px] object-cover"
               />
             </div>
-            {article.imageCaption && (
-              <p className="text-[11px] italic text-slate-500 text-center font-normal px-2">
-                {article.imageCaption.replace(/^Chú thích ảnh:\s*/i, '')}
-              </p>
-            )}
+            {renderFormattedCaption(article.imageCaption)}
           </div>
 
           {/* Summary / Sapo (Roboto text 13) */}
@@ -155,11 +180,7 @@ export function ArticleReaderModal({ article, isOpen, onClose }: ArticleReaderMo
                             className="w-full max-h-[420px] object-cover"
                           />
                         </div>
-                        {article.secondaryImage!.caption && (
-                          <p className="text-[11px] italic text-slate-500 text-center font-normal px-2">
-                            {article.secondaryImage!.caption.replace(/^Chú thích ảnh:\s*/i, '')}
-                          </p>
-                        )}
+                        {renderFormattedCaption(article.secondaryImage!.caption)}
                       </div>
                     )}
                   </React.Fragment>
@@ -183,11 +204,7 @@ export function ArticleReaderModal({ article, isOpen, onClose }: ArticleReaderMo
                   className="w-full max-h-[420px] object-cover"
                 />
               </div>
-              {article.secondaryImage.caption && (
-                <p className="text-[11px] italic text-slate-500 text-center font-normal px-2">
-                  {article.secondaryImage.caption.replace(/^Chú thích ảnh:\s*/i, '')}
-                </p>
-              )}
+              {renderFormattedCaption(article.secondaryImage.caption)}
             </div>
           )}
 

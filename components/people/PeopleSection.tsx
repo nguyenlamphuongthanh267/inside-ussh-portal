@@ -161,9 +161,23 @@ export function PeopleSection({ people }: PeopleSectionProps) {
                                 className="w-full h-full object-cover"
                               />
                             </div>
-                            <p className="text-[11px] italic text-slate-500 text-center">
-                              {featuredLeader.secondaryImage.caption?.replace(/^Chú thích ảnh:\s*/i, '')}
-                            </p>
+                            {(() => {
+                              const cap = featuredLeader.secondaryImage.caption?.replace(/^Chú thích ảnh:\s*/i, '').trim();
+                              if (!cap) return null;
+                              const match = cap.match(/^(.*?)(?:[\.\s\-–—]*)\s*(\(?Ảnh:\s*[^)]+\)?)$/i);
+                              if (match) {
+                                return (
+                                  <div className="text-[11.5px] text-slate-500 text-center font-normal px-2 space-y-1">
+                                    <p className="italic leading-relaxed">{match[1].trim()}</p>
+                                    <p className="not-italic font-semibold text-slate-700 text-[11px] tracking-wide inline-flex items-center justify-center gap-1">
+                                      <span className="text-slate-400">•</span>
+                                      <span>{match[2].trim()}</span>
+                                    </p>
+                                  </div>
+                                );
+                              }
+                              return <p className="text-[11px] italic text-slate-500 text-center">{cap}</p>;
+                            })()}
                           </div>
                         )}
                       </React.Fragment>
