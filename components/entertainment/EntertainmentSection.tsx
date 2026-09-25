@@ -98,7 +98,7 @@ export function EntertainmentSection() {
               {/* Text Info */}
               <div className="min-w-0">
                 <h3 className="font-bold text-sm sm:text-base text-ussh-navy group-hover:text-ussh-accent transition-colors leading-snug font-sans">
-                  Minigame hàng tuần: Thử thách trí tuệ
+                  Minigame hằng tháng: Thử thách trí tuệ
                 </h3>
                 <p className="text-[11px] sm:text-xs text-slate-500 mt-1 line-clamp-1">
                   Khoanh chữ - Tìm dấu ấn Nhân Văn • 8 từ khóa
@@ -128,7 +128,7 @@ export function EntertainmentSection() {
               <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white border border-slate-200/80 p-1.5 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/docx/image1.png"
+                  src="/images/docx/image2.png"
                   alt="Minh họa Góc Funny"
                   className="w-full h-full object-contain"
                 />
@@ -173,10 +173,10 @@ export function EntertainmentSection() {
                 </div>
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-ussh-accent block">
-                    Minigame hàng tuần • Thử thách trí tuệ
+                    MINIGAME HẰNG THÁNG • THỬ THÁCH TRÍ TUỆ
                   </span>
                   <span className="text-[11px] font-semibold text-emerald-700">
-                    Tổng giải thưởng: 4.800.000đ
+                    Tổng giải thưởng: 5.000.000đ
                   </span>
                 </div>
               </div>

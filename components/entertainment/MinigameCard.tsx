@@ -75,7 +75,7 @@ export function MinigameCard({ game }: MinigameCardProps) {
 
           {/* Title matching mockup */}
           <h3 className="font-bold text-base text-ussh-navy group-hover:text-ussh-accent transition-colors leading-snug mb-1">
-            Minigame hàng tuần: Thử thách trí tuệ
+            Minigame hằng tháng: Thử thách trí tuệ
           </h3>
           <p className="text-xs text-slate-600 mb-4 line-clamp-2">
             {game.subtitle}

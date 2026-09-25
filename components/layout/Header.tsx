@@ -291,7 +291,7 @@ export function Header() {
                             <Gamepad2 className="w-4 h-4" />
                           </div>
                           <div>
-                            <div className="font-semibold text-xs text-slate-800 dark:text-slate-100">Minigame hàng tuần</div>
+                            <div className="font-semibold text-xs text-slate-800 dark:text-slate-100">Minigame hằng tháng</div>
                             <div className="text-[11px] text-slate-500 dark:text-slate-400">Khoanh chữ & đố vui trí tuệ</div>
                           </div>
                         </a>

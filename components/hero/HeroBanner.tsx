@@ -618,10 +618,10 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
                 </div>
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-ussh-accent block">
-                    Minigame hàng tuần • Thử thách trí tuệ
+                    MINIGAME HẰNG THÁNG • THỬ THÁCH TRÍ TUỆ
                   </span>
                   <span className="text-[11px] font-semibold text-emerald-700">
-                    Tổng giải thưởng: 4.800.000đ
+                    Tổng giải thưởng: 5.000.000đ
                   </span>
                 </div>
               </div>

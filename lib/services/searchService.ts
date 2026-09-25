@@ -247,7 +247,7 @@ export function searchAll(query: string, category: SearchCategoryFilter = 'all')
       results.push({
         id: 'ent_minigame',
         type: 'entertainment',
-        categoryLabel: 'Minigame hàng tuần',
+        categoryLabel: 'Minigame hằng tháng',
         badgeColor: 'bg-purple-50 text-purple-700 border-purple-200',
         title: MOCK_MINIGAME_DOCX.title,
         summary: MOCK_MINIGAME_DOCX.subtitle,
