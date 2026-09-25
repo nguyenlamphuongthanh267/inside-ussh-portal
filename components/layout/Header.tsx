@@ -201,7 +201,7 @@ export function Header() {
       }`}
     >
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-2 xl:gap-3 overflow-hidden">
+        <div className="flex items-center gap-2 xl:gap-3">
           {/* Brand Logo & Wordmark */}
           <a
             href="#home"
@@ -230,7 +230,7 @@ export function Header() {
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5 2xl:gap-2.5 text-xs xl:text-[13px] font-semibold min-w-0 overflow-hidden" aria-label="Menu chính">
+          <nav className="hidden lg:flex items-center justify-center flex-1 gap-0.5 xl:gap-1 2xl:gap-2 text-xs xl:text-[13px] font-semibold px-2" aria-label="Menu chính">
             {NAV_ITEMS.map((item) => {
               const isActive = activeSection === item.href.replace('#', '');
 
@@ -344,7 +344,6 @@ export function Header() {
             })}
           </nav>
 
-          {/* Right Actions: Search + Notifications + High Contrast + Profile */}
           <div className="flex items-center gap-2 xl:gap-3 shrink-0">
             {/* Search Input on taskbar with real-time dropdown matching mockup */}
             <div className="hidden md:flex items-center relative" ref={searchRef}>
@@ -359,7 +358,7 @@ export function Header() {
                   onFocus={() => setSearchOpen(true)}
                   onClick={() => setSearchOpen(true)}
                   placeholder="Tìm kiếm..."
-                  className="w-28 xl:w-36 2xl:w-44 pl-8 pr-7 py-1.5 bg-white/80 dark:bg-slate-800 border border-slate-300/80 dark:border-slate-700 rounded-full text-xs text-slate-800 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-ussh-navy dark:focus:ring-slate-400 focus:w-52 transition-all shadow-xs"
+                  className="w-24 xl:w-32 pl-8 pr-7 py-1.5 bg-white/80 dark:bg-slate-800 border border-slate-300/80 dark:border-slate-700 rounded-full text-xs text-slate-800 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-ussh-navy dark:focus:ring-slate-400 focus:w-44 transition-all shadow-xs"
                   aria-label="Tìm kiếm trên trang"
                   aria-expanded={searchOpen}
                 />
@@ -456,12 +455,12 @@ export function Header() {
                   className="w-9 h-9 rounded-full object-cover border border-rose-200/90 dark:border-slate-700 shadow-sm bg-rose-50/80 shrink-0"
                 />
               </div>
-              <div className="text-left hidden lg:flex lg:flex-col justify-center max-w-[140px] xl:max-w-[200px] overflow-hidden">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-xs xl:text-[13px] font-extrabold text-ussh-navy dark:text-white leading-tight truncate">
+              <div className="text-left hidden lg:flex lg:flex-col justify-center max-w-[110px] xl:max-w-[160px]">
+                <div className="flex items-center gap-1 min-w-0">
+                  <span className="text-xs font-extrabold text-ussh-navy dark:text-white leading-tight truncate min-w-0">
                     {CURRENT_USER.name}
                   </span>
-                  <span className="px-1.5 py-0.5 text-[9px] font-bold rounded bg-red-100 text-ussh-accent dark:bg-red-950/80 dark:text-red-300 border border-red-200 dark:border-red-900/60 leading-none whitespace-nowrap shrink-0">
+                  <span className="px-1 py-0.5 text-[8px] font-bold rounded bg-red-100 text-ussh-accent border border-red-200 leading-none whitespace-nowrap shrink-0">
                     {CURRENT_USER.role}
                   </span>
                 </div>
