@@ -11,6 +11,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5.5rem; /* Ensure anchor links leave space for sticky header */
+  overflow-x: clip;
 }
 
 body {

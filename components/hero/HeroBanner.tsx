@@ -120,12 +120,12 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
               </div>
 
               {/* Headline matching Mockup */}
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-ussh-navy tracking-tight leading-snug mb-3 font-sans">
+              <h1 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-ussh-navy tracking-tight leading-snug mb-2 sm:mb-3 font-sans">
                 INSIDE USSH: Nơi Kết Nối, Chia Sẻ của Người Nhân Văn
               </h1>
 
               {/* Short summary */}
-              <p className="text-slate-700 text-xs sm:text-sm leading-relaxed mb-6 font-normal">
+              <p className="text-slate-700 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 font-normal line-clamp-3 sm:line-clamp-none">
                 Không gian truyền thông nội bộ kết nối hơn 1.000 cán bộ, giảng viên và người lao động Trường ĐH KHXH&NV, ĐHQG-HCM. Nơi chia sẻ tri thức, tôn vinh những cống hiến thầm lặng và lan tỏa tinh thần nhân văn.
               </p>
 
@@ -164,7 +164,7 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
             {/* Hero Image - flex-1 expands to fill 100% of remaining space */}
             <div
               onClick={() => setSelectedArticle(featuredStories[0] || heroArticle)}
-              className="relative z-10 flex-1 w-full min-h-[220px] sm:min-h-[300px] lg:min-h-[340px] rounded-2xl overflow-hidden shadow-soft border border-white/60 mt-3 cursor-pointer group/img"
+              className="relative z-10 flex-1 w-full min-h-[180px] sm:min-h-[260px] lg:min-h-[320px] rounded-2xl overflow-hidden shadow-soft border border-white/60 mt-2 sm:mt-3 cursor-pointer group/img"
               title="Nhấp để đọc bài viết tiêu điểm"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}

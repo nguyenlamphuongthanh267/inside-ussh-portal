@@ -128,7 +128,7 @@ export function MobileMenu({ isOpen, onClose, activeSection }: MobileMenuProps) 
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm lg:hidden animate-in fade-in"
+      className="fixed inset-0 z-[60] bg-slate-900/60 backdrop-blur-sm lg:hidden animate-in fade-in"
       role="dialog"
       aria-modal="true"
       aria-label="Menu điều hướng di động"
