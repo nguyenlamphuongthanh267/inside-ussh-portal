@@ -2,17 +2,10 @@ import { NavItem, UserProfile } from '@/types/navigation';
 
 export const NAV_ITEMS: NavItem[] = [
   { label: 'Trang chủ', href: '#home' },
-  { label: 'Giới thiệu', href: '#about' },
   { label: 'Tin tức - Sự kiện', href: '#news' },
   {
-    label: 'Người Nhân Văn',
+    label: 'Ký Nhân văn',
     href: '#people',
-    isSpecialPill: true,
-    avatarIcon: '/images/docx/image18.jpg',
-  },
-  {
-    label: 'Khoảnh khắc Nhân Văn',
-    href: '#gallery',
   },
   {
     label: 'Phút thư giãn',
@@ -20,16 +13,20 @@ export const NAV_ITEMS: NavItem[] = [
     hasDropdown: true,
     dropdownItems: [
       {
-        label: 'Minigame hàng tuần',
+        label: 'Minigame hằng tháng',
         href: '#entertainment',
         description: 'Khoanh chữ - Tìm dấu ấn Nhân Văn',
       },
       {
-        label: 'Bài funny văn phòng',
+        label: 'Bài Funny',
         href: '#entertainment',
         description: 'Sáng Quận 1, chiều Thủ Đức: Khi công chức Nhân Văn hoá phượt thủ',
       },
     ],
+  },
+  {
+    label: 'Khoảnh khắc Nhân Văn',
+    href: '#gallery',
   },
 ];
 
@@ -46,11 +43,10 @@ export const CURRENT_USER: UserProfile = {
 export const FOOTER_LINKS = {
   sitemap: [
     { label: 'Trang chủ', href: '#home' },
-    { label: 'Giới thiệu USSH', href: '#about' },
     { label: 'Tin tức - Sự kiện', href: '#news' },
-    { label: 'Người Nhân Văn', href: '#people' },
-    { label: 'Khoảnh khắc Nhân Văn', href: '#gallery' },
+    { label: 'Ký Nhân văn', href: '#people' },
     { label: 'Phút thư giãn', href: '#entertainment' },
+    { label: 'Khoảnh khắc Nhân Văn', href: '#gallery' },
   ],
   internalPortals: [
     { label: 'Cổng thông tin Đào tạo', href: 'https://hcmussh.edu.vn', external: true },
@@ -60,8 +56,8 @@ export const FOOTER_LINKS = {
     { label: 'Chi hội Nữ trí thức & Công đoàn', href: '#', external: false },
   ],
   contacts: {
-    campus1: '10 - 12 Đinh Tiên Hoàng, P. Bến Nghé (P. Sài Gòn), Quận 1, TP. Hồ Chí Minh',
-    campus2: 'Khu Đô thị ĐHQG-HCM, P. Linh Xuân, TP. Thủ Đức, TP. Hồ Chí Minh',
+    campus1: '10-12 Đinh Tiên Hoàng, P. Sài Gòn, TP.HCM',
+    campus2: 'Khu đô thị ĐHQG-HCM, P. Linh Xuân, TP.HCM',
     phone: '(028) 3829 3828',
     email: 'insideussh@gmail.com',
     website: 'https://hcmussh.edu.vn',

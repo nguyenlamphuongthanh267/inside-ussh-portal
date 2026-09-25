@@ -234,29 +234,20 @@ export function Header() {
             {NAV_ITEMS.map((item) => {
               const isActive = activeSection === item.href.replace('#', '');
 
-              // Special Pill for "Người Nhân Văn" (matching the mockup design)
-              if (item.isSpecialPill) {
+              // Regular link item
+              if (!item.hasDropdown) {
                 return (
                   <a
                     key={item.href}
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item.href)}
-                    className={`inline-flex items-center gap-1.5 xl:gap-2 px-2.5 xl:px-3 py-1.5 rounded-full transition-all border whitespace-nowrap shrink-0 ${
+                    className={`px-2 xl:px-2.5 py-1.5 transition-colors font-medium whitespace-nowrap shrink-0 ${
                       isActive
-                        ? 'bg-red-100 text-ussh-accent border-red-300 shadow-sm font-semibold'
-                        : 'bg-[#FBEBE5] text-ussh-accent hover:bg-[#F8DDD4] border-transparent font-medium'
-                    } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ussh-accent`}
+                        ? 'text-ussh-navy dark:text-white font-bold'
+                        : 'text-slate-700 dark:text-slate-300 hover:text-ussh-navy dark:hover:text-white'
+                    } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ussh-navy`}
                   >
-                    {item.avatarIcon && (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={item.avatarIcon}
-                        alt=""
-                        className="w-5 h-5 rounded-full object-cover border border-white shrink-0"
-                      />
-                    )}
-                    <span className="whitespace-nowrap">{item.label}</span>
-                    <span className="text-xs">›</span>
+                    {item.label}
                   </a>
                 );
               }

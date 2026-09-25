@@ -120,20 +120,14 @@ export function ArticleReaderModal({ article, isOpen, onClose }: ArticleReaderMo
               {article.title}
             </h1>
 
-            {/* Author & Meta */}
+            {/* Author & Meta (Đồng bộ in hoa, không avatar, không phòng ban) */}
             <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500 pb-5 border-b border-slate-100">
-              <div className="flex items-center gap-2">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={article.author.avatar}
-                  alt={article.author.name}
-                  className="w-7 h-7 rounded-full object-cover border border-slate-200"
-                />
-                <span className="font-semibold text-slate-700">{article.author.name}</span>
-                <span className="text-slate-400">({article.author.department})</span>
+              <div className="flex items-center gap-1.5 font-bold uppercase text-ussh-navy tracking-wide">
+                <span className="text-slate-400 font-medium">Tác giả:</span>
+                <span className="text-ussh-navy">{article.author.name}</span>
               </div>
-              <span className="flex items-center gap-1">
-                <Clock className="w-3.5 h-3.5 text-slate-400" />
+              <span className="flex items-center gap-1 text-slate-400">
+                <Clock className="w-3.5 h-3.5" />
                 {article.readingTime}
               </span>
             </div>

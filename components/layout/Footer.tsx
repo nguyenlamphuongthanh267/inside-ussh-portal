@@ -105,15 +105,15 @@ export function Footer() {
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-white block font-semibold mb-0.5">Cơ sở Sài Gòn (Trụ sở chính):</strong>
-                  10 - 12 Đinh Tiên Hoàng, Phường Bến Nghé (P. Sài Gòn), Quận 1, TP. Hồ Chí Minh
+                  <strong className="text-white block font-semibold mb-0.5">Cơ sở Sài Gòn:</strong>
+                  10-12 Đinh Tiên Hoàng, P. Sài Gòn, TP.HCM
                 </div>
               </li>
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                 <div>
                   <strong className="text-white block font-semibold mb-0.5">Cơ sở Linh Xuân:</strong>
-                  Khu đô thị ĐHQG-HCM, Phường Linh Xuân, TP. Thủ Đức, TP. Hồ Chí Minh
+                  Khu đô thị ĐHQG-HCM, P. Linh Xuân, TP.HCM
                 </div>
               </li>
             </ul>

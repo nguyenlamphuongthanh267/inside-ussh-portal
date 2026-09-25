@@ -1,31 +1,10 @@
+// 1. Dữ liệu các bài tin tức
 import { NewsArticle } from '@/types/news';
 import { PersonProfile } from '@/types/people';
-import { AnnouncementItem } from '@/types/announcements';
 import { GalleryMoment } from '@/types/gallery';
 import { MinigameData, HumorStory, PollData } from '@/types/entertainment';
+import { AnnouncementItem } from '@/types/announcements';
 
-export const MOCK_HERO_ARTICLE: NewsArticle = {
-  id: 'news_hero_01',
-  title: 'INSIDE USSH: Nơi Kết Nối, Chia Sẻ Của Người Nhân Văn',
-  slug: 'inside-ussh-noi-ket-noi-chia-se',
-  summary: 'Chào mừng quý thầy cô, cán bộ và người lao động đến với không gian số gắn kết cộng đồng trường Đại học Khoa học Xã hội và Nhân văn, ĐHQG-HCM. Cùng lan tỏa những giá trị nhân văn và tri thức bền vững.',
-  category: 'tat-ca',
-  categoryName: 'Bản Tin Tiêu Điểm',
-  imageUrl: '/images/docx/image4.jpg',
-  publishDate: '2026-09-19',
-  readingTime: '4 phút đọc',
-  author: {
-    id: 'auth_banbientap',
-    name: 'Ban Biên Tập Inside USSH',
-    avatar: '/images/ussh-logo.png',
-    role: 'Phòng Truyền thông & Quan hệ Doanh nghiệp',
-    department: 'Trường ĐH KHXH&NV',
-  },
-  isFeatured: true,
-  tags: ['Inside USSH', 'Gắn kết', 'Cộng đồng Nhân Văn'],
-};
-
-// 3 Real Articles directly extracted from D:\Nội dung website QHCC.docx
 export const MOCK_NEWS_ARTICLES: NewsArticle[] = [
   {
     id: 'news_70_nam',
@@ -44,10 +23,10 @@ export const MOCK_NEWS_ARTICLES: NewsArticle[] = [
     readingTime: '4 phút đọc',
     author: {
       id: 'auth_phuongthao',
-      name: 'Phương Thảo',
-      avatar: '/images/docx/image16.jpg',
-      role: 'Phóng viên Bản tin',
-      department: 'Phòng Truyền thông & Quan hệ Doanh nghiệp',
+      name: 'PHƯƠNG THẢO',
+      avatar: '',
+      role: 'Phóng viên',
+      department: '',
     },
     isFeatured: true,
     isTrending: true,
@@ -97,10 +76,10 @@ export const MOCK_NEWS_ARTICLES: NewsArticle[] = [
     readingTime: '3 phút đọc',
     author: {
       id: 'auth_nhuquynh',
-      name: 'Như Quỳnh',
-      avatar: '/images/docx/image16.jpg',
-      role: 'Phóng viên Bản tin',
-      department: 'Chi hội Nữ trí thức Nhân Văn',
+      name: 'NHƯ QUỲNH',
+      avatar: '',
+      role: 'Phóng viên',
+      department: '',
     },
     isFeatured: true,
     tags: ['Hương xôi Nhân văn', 'Chi hội Nữ trí thức', 'Gắn kết nội bộ', 'Lan tỏa yêu thương'],
@@ -126,10 +105,10 @@ export const MOCK_NEWS_ARTICLES: NewsArticle[] = [
     readingTime: '3 phút đọc',
     author: {
       id: 'auth_khoavan',
-      name: 'Khoa Văn học & Ngôn ngữ học',
-      avatar: '/images/ussh-logo.png',
-      role: 'Ban Tổ chức Hội thảo',
-      department: 'Trường ĐH KHXH&NV, ĐHQG-HCM',
+      name: 'KHOA VĂN HỌC VÀ NGÔN NGỮ HỌC',
+      avatar: '',
+      role: 'Ban Tổ chức',
+      department: '',
     },
     isFeatured: true,
     tags: ['Hội thảo quốc tế', 'Văn học - Nghệ thuật', 'Bối cảnh số hóa', 'AI và Nhân văn số'],
@@ -137,14 +116,16 @@ export const MOCK_NEWS_ARTICLES: NewsArticle[] = [
       'Nhằm thiết lập một diễn đàn trao đổi chuyên sâu về những chuyển biến mang tính thời sự này, Khoa Văn học và Ngôn ngữ học trân trọng thông báo đến toàn thể giảng viên, cán bộ, viên chức Nhà trường về việc tổ chức Hội thảo khoa học quốc tế với chủ đề: “Văn học - nghệ thuật châu Á trong bối cảnh số hóa”.',
       'Hội thảo được tổ chức với mục tiêu tạo ra một không gian học thuật đa chiều, liên ngành và giàu tính đối thoại. Các báo cáo và tham luận tại chương trình sẽ tập trung phân tích nhiều vấn đề đương đại thiết thực, bao gồm: sự tương tác giữa AI và văn học, sự hình thành của nghệ thuật số và văn học trong môi trường mạng. Bên cạnh đó, các chuyên gia cũng sẽ thảo luận những chủ đề mang tính ứng dụng cao như nhân văn số, dịch thuật số, công tác lưu trữ, bản đồ hóa, cải biên văn học – điện ảnh, cũng như sự kiến tạo căn tính và ký ức trong không gian số.',
       'Sự kiện lần này không chỉ là dịp để cập nhật các xu hướng nghiên cứu mới nhất, mà còn mở ra cơ hội để đội ngũ giảng viên, cán bộ của Nhà trường giao lưu, trao đổi học thuật và mở rộng mạng lưới hợp tác chuyên môn.',
-      'Để công tác tổ chức, đón tiếp và phục vụ Hội thảo được diễn ra chu đáo nhất, Ban tổ chức kính gửi thông tin chi tiết và kính mời toàn thể giảng viên, cán bộ, viên chức quan tâm tiến hành đăng ký tham dự.',
+      'Để công tác tổ chức, đón tiếp và phục vụ Hội thảo được diễn ra chu đáo nhất, Ban tổ chức kính gửi thông tin chi tiết và kính mời toàn thể giảng viên, cán bộ, viên chức quan tâm tiến hành đăng ký tham dự:',
+      '• Thời gian: 08:00 - 16:00, ngày 30/9/2026 (Thứ Tư).\n• Địa điểm: Trường Đại học Khoa học Xã hội và Nhân văn, ĐHQG-HCM (Số 10–12 Đinh Tiên Hoàng, phường Sài Gòn, TP. Hồ Chí Minh).\n• Thời hạn đăng ký: Trước ngày 28/9/2026.\n• Link đăng ký tham dự: https://forms.gle/UgZXFndefxroRbky7',
+      'Khoa Văn học và Ngôn ngữ học trân trọng thông báo và kính mời toàn thể giảng viên, cán bộ, viên chức sắp xếp thời gian tham dự, góp phần tạo nên thành công chung cho diễn đàn học thuật ý nghĩa này.',
     ],
     infoBox: {
       title: 'THÔNG TIN ĐĂNG KÝ THAM DỰ HỘI THẢO',
       description: 'Khoa Văn học và Ngôn ngữ học trân trọng thông báo và kính mời toàn thể giảng viên, cán bộ, viên chức sắp xếp thời gian tham dự, góp phần tạo nên thành công chung cho diễn đàn học thuật ý nghĩa này.',
       details: [
         { label: 'Thời gian', value: '08:00 - 16:00, ngày 30/9/2026 (Thứ Tư)' },
-        { label: 'Địa điểm', value: 'Trường ĐH KHXH&NV, ĐHQG-HCM (Số 10–12 Đinh Tiên Hoàng, phường Sài Gòn, TP. Hồ Chí Minh)' },
+        { label: 'Địa điểm', value: 'Trường ĐH KHXH&NV, ĐHQG-HCM (Số 10–12 Đinh Tiên Hoàng, P. Sài Gòn, TP. Hồ Chí Minh)' },
         { label: 'Thời hạn đăng ký', value: 'Trước ngày 28/9/2026' },
         { label: 'Liên hệ', value: 'ThS. Phạm Thị Thái Hà - SĐT: 0933.098.218 - Email: hoithaovhnnh@hcmussh.edu.vn' },
       ],
@@ -155,8 +136,9 @@ export const MOCK_NEWS_ARTICLES: NewsArticle[] = [
 ];
 
 export const MOCK_FEATURED_SLIDER: NewsArticle[] = MOCK_NEWS_ARTICLES;
+export const MOCK_HERO_ARTICLE: NewsArticle = MOCK_NEWS_ARTICLES[0];
 
-// 2. Ký Nhân văn (Người Nhân văn) featuring GS.TS.NGND Ngô Văn Lệ
+// 2. Ký Nhân văn (chỉ giữ duy nhất GS.TS.NGND Ngô Văn Lệ theo yêu cầu)
 export const MOCK_PEOPLE: PersonProfile[] = [
   {
     id: 'ppl_ngo_van_le',
@@ -172,83 +154,25 @@ export const MOCK_PEOPLE: PersonProfile[] = [
     quote: 'Nghề giáo là nghề cao quý, nếu muốn giàu sang thì không ai chọn nghề này. Trước hết, khi đã chọn thì phải yêu công việc, bình tĩnh tự nâng cao năng lực bản thân.',
     bio: 'Nguyên Hiệu trưởng Trường ĐH KHXH&NV, ĐHQG-HCM (1999 - 2007). Thương binh 4/4 từ chiến trường Nam Lào năm 1971, nhà giáo nhân dân với cốt cách của một nhà khoa học mẫu mực.',
     storyTitle: 'GS. TS. NGND. NGÔ VĂN LỆ: GIỮ LỬA NHÂN VĂN TỪ NHỮNG NGÀY GIAN KHÓ',
-    author: 'Thảo Quyên',
+    author: 'THẢO QUYÊN',
     isFeaturedLeader: true,
+    sapo: 'Tháng 9/2026, giữa không khí rộn rã đón tân sinh viên của Trường Đại học Khoa học Xã hội và Nhân văn (ĐHQG-HCM), người ta vẫn thấy thầy Ngô Văn Lệ trở về trường, vui vẻ gặp gỡ đồng nghiệp và tham gia các hoạt động chung. Ở tuổi 78, thầy vẫn giữ dáng vẻ nhanh nhẹn, nụ cười hiền từ cùng sự hồ hởi mỗi khi nhắc đến công việc.',
     storyParagraphs: [
-      'Tháng 9/2026, giữa không khí rộn rã đón tân sinh viên của Trường Đại học Khoa học Xã hội và Nhân văn (ĐHQG-HCM), người ta vẫn thấy thầy Ngô Văn Lệ trở về trường, vui vẻ gặp gỡ đồng nghiệp và tham gia các hoạt động chung. Ở tuổi 78, thầy vẫn giữ dáng vẻ nhanh nhẹn, nụ cười hiền từ cùng sự hồ hởi mỗi khi nhắc đến công việc.',
       'GS.TS.NGND Ngô Văn Lệ là Hiệu trưởng Trường Đại học Khoa học Xã hội và Nhân văn, ĐHQG-HCM nhiệm kỳ 1999 - 2007. Ít ai biết, trước khi trở về với bục giảng và công tác quản lý, thầy từng là thương binh 4/4 đi ra từ chiến trường Nam Lào năm 1971. Trải qua nhiều cương vị từ giảng viên đến Hiệu trưởng, hình ảnh người lãnh đạo ở thầy luôn song hành cùng cốt cách của một nhà khoa học. Dù bộn bề công tác hành chính, thầy vẫn miệt mài tự viết sách và trực tiếp hướng dẫn học trò.',
+      '## Tự mình đi qua gian khó',
       'Khi thầy Lệ nhận nhiệm vụ Hiệu trưởng, Nhà trường đang đứng trước một chặng đường đầy thách thức. Sự thiếu thốn thể hiện rõ từ cơ sở vật chất: ngân sách toàn trường vỏn vẹn 7 tỷ đồng, tài sản chung chỉ có duy nhất một chiếc xe bốn chỗ, 4-5 giảng viên phải cùng làm việc trong một căn phòng chật hẹp và những khoảng sân lầy lội, ngập nước mỗi khi mưa về. Đội ngũ cán bộ lúc ấy vô cùng mỏng với khoảng 200 người, phần lớn chưa có điều kiện tiếp cận các chương trình đào tạo bậc sau đại học.',
       'Trong bối cảnh thiếu thốn cả về vật chất lẫn nhân lực, áp lực lớn nhất đặt lên vai người đứng đầu là phải giữ được sự bình tĩnh để cùng lúc giải quyết bài toán kinh phí, nâng cao chất lượng đội ngũ và tháo gỡ những vướng mắc nội bộ. Hơn hết, dấu ấn của GS. Ngô Văn Lệ không chỉ nằm ở những quyết sách quản lý, mà ở chính tác phong làm việc của thầy. Có thời điểm Ban giám hiệu chỉ còn hai thành viên gánh vác khối lượng công việc khổng lồ của cả ban, thầy vẫn kiên quyết không dùng trợ lý. Mọi việc đều do thầy tự tay sắp xếp. Ngay cả giữa những lịch trình quản lý dày đặc nhất, bục giảng và công tác nghiên cứu vẫn chưa bao giờ bị gác lại.',
       'Sự miệt mài ấy không đơn thuần là thói quen, mà xuất phát từ trách nhiệm với thế hệ sau. Trong suốt thời gian làm Hiệu trưởng, thầy vẫn trực tiếp làm giảng viên hướng dẫn cho nhiều sinh viên, nghiên cứu sinh. Điều này xuất phát từ một trăn trở rất thực tế của thầy. Thầy tâm tình: “Nhiều đồng nghiệp trong nước bấy giờ chưa có phương pháp nghiên cứu bài bản. Mình muốn dùng những kiến thức được đào tạo chuyên sâu ở nước ngoài của mình để trực tiếp hỗ trợ, giúp học trò xử lý tài liệu và vơi bớt sự chật vật trên con đường học thuật. Mình có sẵn công cụ thì mình phải giúp thôi.”',
+      '## Giữ người bằng cách nhìn người',
       'Phía sau một người quản lý quyết đoán là một người thầy dành nhiều sự quan tâm cho những đồng nghiệp cùng làm việc với mình. Thầy kể về một người lái xe đã làm việc 10 năm cho trường. Thay vì chỉ coi anh là một nhân viên, thầy động viên và tạo điều kiện để anh học tập. Nhờ đó, người thanh niên ấy học lên đại học rồi tiếp tục lấy bằng thạc sĩ. Thầy coi anh như người trong gia đình và vui khi nhìn thấy sự trưởng thành ấy.',
       'Thầy cũng nhớ những bữa cơm thời còn làm Hiệu trưởng, khi mọi người có bao nhiêu tiền thì cùng chia nhau trả, không phân biệt vị trí. Những chuyến đi thực tế với sinh viên năm 1980 về Hậu Giang, Cần Thơ, Sóc Trăng cũng trở thành ký ức không thể quên. Thầy trò cùng đi vào những vùng còn thiếu thốn, cùng chịu cảnh khó khăn nhưng nhờ vậy lại hiểu và gắn bó với nhau hơn. Có lẽ từ những trải nghiệm ấy, thầy luôn nhắc đến một điều khi nói về công tác quản lý: “Mỗi người có một hoàn cảnh, một cá tính khác nhau. Muốn xây dựng một tập thể, trước hết phải hiểu những con người đang ở trong tập thể đó.”',
       'Ở tuổi 78, thầy vẫn trở về trường, gặp lại những đồng nghiệp từng cùng mình đi qua những năm tháng khó khăn. Khi được hỏi điều gì khiến thầy vẫn gắn bó với Nhân Văn, thầy không nói về những danh hiệu đã có. Thầy chỉ cười và bảo, sợi dây níu giữ lớn nhất chính là tình người, là sự chan hòa và gắn bó với anh em đồng nghiệp xung quanh. Có lẽ, đó cũng là điều giản dị nhất mà thầy muốn gửi lại cho những người đang tiếp tục công việc ở mái trường này.',
       'Giữa những thay đổi của giáo dục đại học, người làm nghề vẫn cần một điểm tựa: yêu công việc, tự nâng cao năng lực và biết trân trọng người đồng hành. Như lời thầy nhắn nhủ: “Nghề giáo là nghề cao quý, nếu muốn giàu sang thì không ai chọn nghề này. Trước hết, khi đã chọn thì phải yêu công việc, bình tĩnh tự nâng cao năng lực bản thân”.',
     ],
   },
-  {
-    id: 'ppl_ngo_thi_phuong_lan',
-    name: 'Ngô Thị Phương Lan',
-    academicTitle: 'GS.TS.',
-    position: 'Hiệu trưởng Nhà trường',
-    facultyDepartment: 'Khoa Nhân học',
-    avatarUrl: '/images/docx/image5.jpg',
-    quote: 'Khoa học xã hội và nhân văn giữ vai trò kiến tạo những giá trị nền tảng và thấu cảm sâu sắc trong một thế giới phẳng đầy biến động.',
-    bio: 'Hiệu trưởng Trường ĐH KHXH&NV, Chi hội trưởng Chi hội Nữ trí thức, người khởi xướng chương trình ý nghĩa “Hương xôi Nhân văn”.',
-    researchFocus: ['Nhân học phát triển', 'Văn hóa sinh kế Nam Bộ', 'Du lịch cộng đồng'],
-    email: 'lan.ngo@hcmussh.edu.vn',
-  },
-  {
-    id: 'ppl_phan_thanh_dinh',
-    name: 'Phan Thanh Định',
-    academicTitle: 'TS.',
-    position: 'Phó Hiệu trưởng Nhà trường',
-    facultyDepartment: 'Ban Giám hiệu',
-    avatarUrl: '/images/docx/image11.jpg',
-    quote: 'Mỗi hoạt động là một dịp kết nối, mỗi sáng kiến là một đóng góp, mỗi công trình là một dấu ấn hướng về 70 năm Nhân Văn.',
-    bio: 'Phó Hiệu trưởng phụ trách cơ sở vật chất và phong trào, luôn đồng hành cùng các hoạt động của cán bộ, giảng viên và người lao động.',
-    researchFocus: ['Quản trị đại học', 'Lịch sử quan hệ quốc tế', 'Chính sách công'],
-    email: 'dinh.phan@hcmussh.edu.vn',
-  },
-  {
-    id: 'ppl_le_thi_ngoc_diep',
-    name: 'Lê Thị Ngọc Điệp',
-    academicTitle: 'PGS.TS.',
-    position: 'Trưởng Khoa Việt Nam học, Chi hội phó Chi hội Nữ trí thức',
-    facultyDepartment: 'Khoa Việt Nam học',
-    avatarUrl: '/images/docx/image19.jpg',
-    quote: 'Tính gắn kết, đoàn kết là một trong những giá trị cốt lõi trước giờ của Trường Đại học Khoa học Xã hội và Nhân văn.',
-    bio: 'Chuyên gia đầu ngành về Việt Nam học, đồng hành cùng các chương trình gắn kết cộng đồng và lan tỏa văn hóa ẩm thực truyền thống.',
-    researchFocus: ['Việt Nam học', 'Văn hóa ứng xử Nam Bộ', 'Bảo tồn di sản phi vật thể'],
-    email: 'diep.le@hcmussh.edu.vn',
-  },
-  {
-    id: 'ppl_luu_van_quyet',
-    name: 'Lưu Văn Quyết',
-    academicTitle: 'PGS.TS.',
-    position: 'Phó Hiệu trưởng Nhà trường',
-    facultyDepartment: 'Khoa Lịch sử',
-    avatarUrl: '/images/avatar-luu-van-quyet.jpg',
-    quote: 'Tri thức lịch sử và nhân văn là nền tảng vững chắc để xây dựng tinh thần trách nhiệm phụng sự xã hội.',
-    bio: 'Nhà nghiên cứu lịch sử Nam Bộ và quan hệ dân tộc, tích cực thúc đẩy công tác đào tạo sau đại học và hội nhập học thuật.',
-    researchFocus: ['Lịch sử Việt Nam', 'Dân tộc học Nam Bộ', 'Phương pháp nghiên cứu lịch sử'],
-    email: 'quyet.luu@hcmussh.edu.vn',
-  },
-  {
-    id: 'ppl_le_hoang_dung',
-    name: 'Lê Hoàng Dũng',
-    academicTitle: 'TS.',
-    position: 'Phó Hiệu trưởng Nhà trường',
-    facultyDepartment: 'Khoa Ngữ văn Anh',
-    avatarUrl: '/images/avatar-le-hoang-dung.jpg',
-    quote: 'Hội nhập quốc tế gắn liền với việc giữ gìn bản sắc và nâng cao năng lực ngôn ngữ của người Nhân Văn.',
-    bio: 'Tiến sĩ Ngôn ngữ học ứng dụng, phụ trách đối ngoại và hợp tác quốc tế, mở rộng kết nối với các trường đại học hàng đầu thế giới.',
-    researchFocus: ['Ngôn ngữ học ứng dụng', 'Phương pháp giảng dạy tiếng Anh', 'Giao tiếp liên văn hóa'],
-    email: 'dung.le@hcmussh.edu.vn',
-  },
 ];
 
-// 2.2. Khoảnh khắc Nhân Văn (10 Moments strictly from D:\Nội dung website QHCC.docx)
+// 2.2. Khoảnh khắc Nhân Văn (10 Moments strictly with photographer: Phương Thảo)
 export const MOCK_GALLERY: GalleryMoment[] = [
   {
     id: 'gal_01',
@@ -259,7 +183,7 @@ export const MOCK_GALLERY: GalleryMoment[] = [
     imageUrl: '/images/docx/image14.jpg',
     aspectRatio: 'landscape',
     date: '2026-09-19',
-    photographer: 'Phòng Truyền thông & QHDN',
+    photographer: 'Phương Thảo',
   },
   {
     id: 'gal_02',
@@ -281,7 +205,7 @@ export const MOCK_GALLERY: GalleryMoment[] = [
     imageUrl: '/images/docx/image16.jpg',
     aspectRatio: 'portrait',
     date: '2026-09-19',
-    photographer: 'Ban Biên Tập',
+    photographer: 'Phương Thảo',
   },
   {
     id: 'gal_04',
@@ -292,7 +216,7 @@ export const MOCK_GALLERY: GalleryMoment[] = [
     imageUrl: '/images/docx/image11.jpg',
     aspectRatio: 'landscape',
     date: '2026-09-19',
-    photographer: 'Ban Biên Tập',
+    photographer: 'Phương Thảo',
   },
   {
     id: 'gal_05',
@@ -303,7 +227,7 @@ export const MOCK_GALLERY: GalleryMoment[] = [
     imageUrl: '/images/docx/image15.jpg',
     aspectRatio: 'landscape',
     date: '2026-09-19',
-    photographer: 'Ban Biên Tập',
+    photographer: 'Phương Thảo',
   },
   {
     id: 'gal_06',
@@ -314,7 +238,7 @@ export const MOCK_GALLERY: GalleryMoment[] = [
     imageUrl: '/images/docx/image5.jpg',
     aspectRatio: 'landscape',
     date: '2026-09-19',
-    photographer: 'Ban Biên Tập',
+    photographer: 'Phương Thảo',
   },
   {
     id: 'gal_07',
@@ -325,7 +249,7 @@ export const MOCK_GALLERY: GalleryMoment[] = [
     imageUrl: '/images/docx/image10.jpg',
     aspectRatio: 'landscape',
     date: '2026-09-19',
-    photographer: 'Ban Biên Tập',
+    photographer: 'Phương Thảo',
   },
   {
     id: 'gal_08',
@@ -336,7 +260,7 @@ export const MOCK_GALLERY: GalleryMoment[] = [
     imageUrl: '/images/docx/image13.jpg',
     aspectRatio: 'landscape',
     date: '2026-09-19',
-    photographer: 'Ban Biên Tập',
+    photographer: 'Phương Thảo',
   },
   {
     id: 'gal_09',
@@ -347,7 +271,7 @@ export const MOCK_GALLERY: GalleryMoment[] = [
     imageUrl: '/images/docx/image6.jpg',
     aspectRatio: 'landscape',
     date: '2026-09-19',
-    photographer: 'Ban Biên Tập',
+    photographer: 'Phương Thảo',
   },
   {
     id: 'gal_10',
@@ -358,7 +282,7 @@ export const MOCK_GALLERY: GalleryMoment[] = [
     imageUrl: '/images/docx/image17.jpg',
     aspectRatio: 'landscape',
     date: '2026-09-19',
-    photographer: 'Đoàn trường',
+    photographer: 'Phương Thảo',
   },
 ];
 
@@ -368,26 +292,30 @@ export const MOCK_FUNNY_STORY = {
   title: 'SÁNG QUẬN 1, CHIỀU THỦ ĐỨC: KHI CÔNG CHỨC NHÂN VĂN HOÁ “PHƯỢT THỦ THÀNH PHỐ”',
   category: 'Funny',
   imageUrl: '/images/docx/image2.png',
+  summary: 'Hành trình xuyên thành phố nối liền hai cơ sở Đinh Tiên Hoàng và Linh Xuân với đủ mọi sắc thái di chuyển đặc trưng của Thầy Cô nhà Nhân Văn.',
   paragraphs: [
     'Đang tưởng tượng một buổi sáng thanh lịch ngồi nhâm nhi ly cà phê gần cơ sở Đinh Tiên Hoàng, vừa mở lịch biểu ra đã thấy ca tiếp theo phải lập tức hạ cánh xuống Linh Xuân (Thủ Đức), thế là hành trình xuyên thành phố của giáo làng Nhân Văn lại chính thức bắt đầu.',
-    'Trên con đường nối liền hai cơ sở, người ta dễ dàng bắt gặp đủ mọi sắc thái di chuyển đặc trưng. Đó là những “Ninja phượt thủ” lèo lái chiếc xe máy với trang bị áo chống nắng kín kẽ từ đầu đến chân, sẵn sàng nghênh chiến với nắng gió Võ Nguyên Giáp để rồi cập bến trường là tốn ngay 15 phút dặm lại phấn, chỉnh lại trang phục.',
-    'Đó là những “Thiền sư” chọn xe buýt của trường, vừa bước lên cabin đã bật chế độ ngủ bù, tay ôm khư khư xấp giáo án. Còn hệ nào không ta? Còn chứ, đó là hội trải nghiệm tuyến Metro Bến Thành - Suối Tiên mát rượi ngỡ như đang ở Seoul, để rồi bước xuống ga mới giật mình bước vào thử thách “1.000 bước chân xuyên nắng” từ cổng A vào tới giảng đường B.',
-    'Ngay cả hệ đi ô tô cá nhân thong dong mở nhạc Lofi du dương cũng chẳng tránh khỏi cảnh kẹt xe tắc đường. Dù chọn phương tiện nào đi nữa, chỉ cần cập bến Linh Xuân đúng giờ lên lớp đã là một chiến công hiển hách của Thầy Cô nhà Nhân Văn.',
-    '👉 Giáo làng hôm nay thuộc “hệ di chuyển” nào trên hành trình Đinh Tiên Hoàng tới Linh Xuân?',
+    'Trên con đường nối liền hai cơ sở, người ta dễ dàng bắt gặp đủ mọi sắc thái di chuyển đặc trưng. Đó là những “Ninja phượt thủ” lèo lái chiếc xe máy với trang bị áo chống nắng kín kẽ từ đầu đến chân, sẵn sàng nghênh chiến với nắng gió Võ Nguyên Giáp để rồi cập bến trường là tốn ngay 15 phút dặm lại phấn, chỉnh lại trang phục. Đó là những “Thiền sư” chọn xe buýt của trường, vừa bước lên cabin đã bật chế độ ngủ bù, tay ôm khư khư xấp giáo án.',
+    'Còn hệ nào không ta? Còn chứ, đó là hội trải nghiệm tuyến Metro Bến Thành - Suối Tiên mát rượi ngỡ như đang ở Seoul, để rồi bước xuống ga mới giật mình bước vào thử thách “1.000 bước chân xuyên nắng” từ cổng A vào tới giảng đường B. Ngay cả hệ đi ô tô cá nhân thong dong mở nhạc Lofi du dương cũng chẳng tránh khỏi cảnh kẹt xe tắc đường.',
+    'Dù chọn phương tiện nào đi nữa, chỉ cần cập bến Linh Xuân đúng giờ lên lớp đã là một chiến công hiển hách của Thầy Cô nhà Nhân Văn.',
+    'Giáo làng hôm nay thuộc “hệ di chuyển” nào trên hành trình Đinh Tiên Hoàng tới Linh Xuân?',
   ],
 };
 
 export const MOCK_MINIGAME_DOCX = {
   id: 'minigame_khoanh_chu',
   title: 'THỂ LỆ MINIGAME “KHOANH CHỮ - TÌM DẤU ẤN NHÂN VĂN”',
-  subtitle: 'Tìm 03 từ khóa ẩn trong “rừng chữ” - Giải Nhất lên đến 1.000.000 đồng',
+  badge: 'MINIGAME HẰNG THÁNG',
+  subtitle: 'MINIGAME HẰNG THÁNG • Tổng giải thưởng: 5.000.000đ',
+  totalPrizes: '5.000.000đ',
   imageUrl: '/images/docx/image20.png',
   formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfAsiYFKoMjdJ8b9hmUUTdr3lsx772OXoyx3E_tX9pDigbxcQ/viewform?pli=1',
   targetAudience: 'Giảng viên, cán bộ và người lao động đang công tác tại Trường Đại học Khoa học Xã hội và Nhân văn, ĐHQG-HCM.',
   description: 'Người tham gia sẽ tìm và khoanh 03 từ khóa được ẩn trong “rừng chữ”. Các từ khóa đều liên quan đến Trường Đại học Khoa học Xã hội và Nhân văn, ĐHQG-HCM. Trong đó, một từ khóa được thiết kế theo chiều ngược và người tham gia cần xoay bản tin 180° để nhận diện.',
   steps: [
     'Bước 1: Tìm 03 từ khóa trong “rừng chữ” được đăng trên bản tin.',
-    'Bước 2: Điền đầy đủ thông tin và gửi đáp án thông qua biểu mẫu (Form) của Mini-game (quét mã QR hoặc nhấn nút tham gia bên dưới).',
+    'Bước 2: Chọn một số may mắn gồm 4 chữ số từ 0 - 9999.',
+    'Bước 3: Điền đầy đủ thông tin và gửi đáp án thông qua biểu mẫu (Form) của Mini-game.',
   ],
   prizes: [
     { rank: 'Giải Nhất', count: '01 giải', amount: '1.000.000 đồng', note: 'Trùng cả 4 số may mắn' },

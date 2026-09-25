@@ -10,6 +10,7 @@ export interface PersonProfile {
   researchFocus?: string[];
   email?: string;
   storyTitle?: string;
+  sapo?: string;
   storyParagraphs?: string[];
   secondaryImage?: {
     url: string;

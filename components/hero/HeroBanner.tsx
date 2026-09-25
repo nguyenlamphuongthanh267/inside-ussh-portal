@@ -201,14 +201,6 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
                   </h2>
                   <span className="w-7 h-1 bg-ussh-accent rounded-full hidden sm:block" />
                 </div>
-
-                <a
-                  href="#news"
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-ussh-accent hover:text-ussh-accent-hover transition-colors"
-                >
-                  <span>Xem tất cả</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </a>
               </div>
 
               {/* 3 Featured News Cards Grid (Compact & Natural Height - Zero Empty Space) */}
@@ -224,61 +216,66 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
             </div>
 
             {/* ---------------------------------------------------- */}
-            {/* 2. Người Nhân Văn                                   */}
+            {/* 2. Ký Nhân văn (GS.TS.NGND Ngô Văn Lệ)               */}
             {/* ---------------------------------------------------- */}
             <div id="people" className="scroll-mt-24 pt-2">
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
                   <h2 className="text-lg sm:text-xl font-bold text-ussh-navy tracking-tight font-sans">
-                    Người Nhân Văn
+                    Ký Nhân văn
                   </h2>
                   <div className="flex items-center gap-1">
                     <span className="w-6 h-1 bg-ussh-accent rounded-full" />
                     <span className="w-2 h-1 bg-ussh-accent/50 rounded-full" />
                   </div>
                 </div>
+              </div>
 
-                {/* Carousel Arrows */}
-                <div className="flex items-center gap-1.5">
-                  <button
-                    onClick={() => handleScroll('left')}
-                    className="p-1.5 rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 hover:text-ussh-navy transition-colors shadow-2xs"
-                    aria-label="Cuộn sang trái"
-                  >
-                    <ChevronLeft className="w-3.5 h-3.5" />
-                  </button>
-                  <button
-                    onClick={() => handleScroll('right')}
-                    className="p-1.5 rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 hover:text-ussh-navy transition-colors shadow-2xs"
-                    aria-label="Cuộn sang phải"
-                  >
-                    <ChevronRight className="w-3.5 h-3.5" />
-                  </button>
+              {/* Dedicated Featured Portrait Card for Thay Ngo Van Le (Khung ảnh trọn vẹn không bị zoom/cắt) */}
+              {featuredLeader && (
+                <div
+                  onClick={() => setIsMemoirOpen(true)}
+                  className="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-soft hover:shadow-card hover:border-ussh-accent/50 transition-all cursor-pointer group flex flex-col sm:flex-row items-center sm:items-stretch gap-4 sm:gap-6"
+                >
+                  {/* Portrait photo - Khung ảnh chân dung giữ trọn vẹn thần thái của Thầy */}
+                  <div className="w-32 h-36 sm:w-40 sm:h-auto rounded-xl overflow-hidden bg-slate-100 border border-slate-200 shrink-0 shadow-2xs group-hover:scale-[1.02] transition-transform duration-300">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={featuredLeader.avatarUrl}
+                      alt={featuredLeader.name}
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
+
+                  {/* Content details */}
+                  <div className="flex flex-col justify-between flex-1 text-center sm:text-left min-w-0">
+                    <div>
+                      <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-ussh-accent/10 text-ussh-accent text-[11px] font-bold tracking-wide uppercase mb-1.5">
+                        <span>Gương sáng Nhân Văn</span>
+                      </div>
+                      <h3 className="text-base sm:text-lg font-bold text-ussh-navy group-hover:text-ussh-accent transition-colors font-sans">
+                        {featuredLeader.academicTitle} {featuredLeader.name}
+                      </h3>
+                      <p className="text-xs font-semibold text-ussh-accent mt-0.5">
+                        {featuredLeader.position}
+                      </p>
+                      <p className="text-[11.5px] italic text-slate-600 mt-2.5 leading-relaxed bg-[#F8EFE9]/60 p-2.5 rounded-lg border-l-2 border-ussh-accent">
+                        “{featuredLeader.quote}”
+                      </p>
+                    </div>
+
+                    <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between">
+                      <span className="text-[11px] text-slate-400 font-medium">
+                        Tác giả: <strong className="text-slate-600 uppercase">THẢO QUYÊN</strong>
+                      </span>
+                      <div className="inline-flex items-center gap-1 text-xs font-bold text-ussh-accent group-hover:translate-x-0.5 transition-transform">
+                        <span>Đọc câu chuyện</span>
+                        <ChevronRight className="w-3.5 h-3.5" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-
-              {/* Horizontal Carousel Track */}
-              <div
-                ref={scrollRef}
-                className="flex items-stretch gap-3 overflow-x-auto pb-2 pt-0.5 scrollbar-none scroll-smooth"
-                role="region"
-                aria-label="Danh sách chân dung Người Nhân Văn"
-              >
-                {MOCK_PEOPLE.map((person) => (
-                  <ProfileCard
-                    key={person.id}
-                    person={person}
-                    isSelected={selectedPerson?.id === person.id}
-                    onClick={() => {
-                      if (person.id === 'ppl_ngo_van_le') {
-                        setIsMemoirOpen(true);
-                      } else {
-                        setSelectedPerson(person);
-                      }
-                    }}
-                  />
-                ))}
-              </div>
+              )}
             </div>
 
             {/* ---------------------------------------------------- */}
@@ -312,7 +309,7 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
                     <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-xl bg-white border border-slate-200/80 p-1 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform overflow-hidden">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src="/images/docx/image2.png"
+                        src="/images/docx/image20.png"
                         alt="Bảng rừng chữ Minigame"
                         className="w-full h-full object-contain"
                       />
@@ -320,8 +317,11 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
 
                     {/* Text Info */}
                     <div className="min-w-0">
+                      <div className="text-[10px] font-bold uppercase tracking-wider text-ussh-accent">
+                        MINIGAME HẰNG THÁNG
+                      </div>
                       <h3 className="font-bold text-xs sm:text-sm text-ussh-navy group-hover:text-ussh-accent transition-colors leading-snug font-sans">
-                        Minigame hàng tuần: Thử thách trí tuệ
+                        Tổng giải thưởng: 5.000.000đ
                       </h3>
                       <div className="inline-flex items-center gap-1 text-[11px] font-bold text-ussh-accent mt-1 group-hover:underline">
                         <span>Chơi ngay!</span>
@@ -344,20 +344,23 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
                       B
                     </div>
 
-                    {/* Coffee/Funny Thumbnail Icon */}
+                    {/* Funny Illustration Thumbnail */}
                     <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-xl bg-white border border-slate-200/80 p-1 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform overflow-hidden">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src="/images/docx/image1.png"
-                        alt="Minh họa Góc Funny"
+                        src="/images/docx/image2.png"
+                        alt="Minh họa Funny"
                         className="w-full h-full object-contain"
                       />
                     </div>
 
                     {/* Text Info */}
                     <div className="min-w-0">
-                      <h3 className="font-bold text-xs sm:text-sm text-ussh-navy group-hover:text-ussh-accent transition-colors leading-snug font-sans">
-                        Góc Funny: Những câu chuyện nhỏ trong văn phòng
+                      <div className="text-[10px] font-bold uppercase tracking-wider text-amber-600">
+                        FUNNY
+                      </div>
+                      <h3 className="font-bold text-xs sm:text-sm text-ussh-navy group-hover:text-ussh-accent transition-colors leading-snug font-sans line-clamp-1">
+                        Sáng Quận 1, chiều Thủ Đức
                       </h3>
                       <div className="inline-flex items-center gap-1 text-[11px] font-bold text-ussh-accent mt-1 group-hover:underline">
                         <span>Đọc vui!</span>
@@ -439,43 +442,66 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
                 </p>
               </div>
 
-              {/* Story Paragraphs */}
+              {/* Sapo Lead Paragraph (Roboto text 13, in đậm, khung border cách điệu giống tin tức) */}
+              {featuredLeader.sapo && (
+                <p className="text-[13px] font-semibold text-slate-800 leading-relaxed bg-ussh-cream-50 p-4 rounded-xl border-l-4 border-ussh-accent">
+                  {featuredLeader.sapo}
+                </p>
+              )}
+
+              {/* Story Paragraphs with Subheadings */}
               <div className="space-y-4 text-[13px] leading-relaxed text-slate-700 font-normal">
                 {featuredLeader.storyParagraphs ? (
-                  featuredLeader.storyParagraphs.map((para, i) => (
-                    <React.Fragment key={i}>
-                      <p>{para}</p>
-                      {i === 3 && featuredLeader.secondaryImage && (
-                        <div className="my-6 space-y-2">
-                          <div className="rounded-2xl overflow-hidden max-h-[420px] bg-slate-100 border border-slate-200">
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
-                              src={featuredLeader.secondaryImage.url}
-                              alt=""
-                              className="w-full h-full object-cover"
-                            />
+                  featuredLeader.storyParagraphs.map((para, i) => {
+                    // Check if paragraph is a subheading (trung đề)
+                    if (para.startsWith('## ')) {
+                      const subheading = para.replace('## ', '');
+                      return (
+                        <h3
+                          key={i}
+                          className="text-base sm:text-lg font-bold text-ussh-navy uppercase tracking-tight pt-4 pb-1 border-b border-ussh-border/70 flex items-center gap-2 font-sans"
+                        >
+                          <span className="w-1.5 h-4 bg-ussh-accent rounded-full inline-block" />
+                          <span>{subheading}</span>
+                        </h3>
+                      );
+                    }
+
+                    return (
+                      <React.Fragment key={i}>
+                        <p>{para}</p>
+                        {i === 4 && featuredLeader.secondaryImage && (
+                          <div className="my-6 space-y-2">
+                            <div className="rounded-2xl overflow-hidden max-h-[420px] bg-slate-100 border border-slate-200">
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src={featuredLeader.secondaryImage.url}
+                                alt=""
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                            {(() => {
+                              const cap = featuredLeader.secondaryImage.caption?.replace(/^Chú thích ảnh:\s*/i, '').trim();
+                              if (!cap) return null;
+                              const match = cap.match(/^(.*?)(?:[\.\s\-–—]*)\s*(\(?Ảnh:\s*[^)]+\)?)$/i);
+                              if (match) {
+                                return (
+                                  <div className="text-[11.5px] text-slate-500 text-center font-normal px-2 space-y-1">
+                                    <p className="italic leading-relaxed">{match[1].trim()}</p>
+                                    <p className="not-italic font-semibold text-slate-700 text-[11px] tracking-wide inline-flex items-center justify-center gap-1">
+                                      <span className="text-slate-400">•</span>
+                                      <span>{match[2].trim()}</span>
+                                    </p>
+                                  </div>
+                                );
+                              }
+                              return <p className="text-[11px] italic text-slate-500 text-center">{cap}</p>;
+                            })()}
                           </div>
-                          {(() => {
-                            const cap = featuredLeader.secondaryImage.caption?.replace(/^Chú thích ảnh:\s*/i, '').trim();
-                            if (!cap) return null;
-                            const match = cap.match(/^(.*?)(?:[\.\s\-–—]*)\s*(\(?Ảnh:\s*[^)]+\)?)$/i);
-                            if (match) {
-                              return (
-                                <div className="text-[11.5px] text-slate-500 text-center font-normal px-2 space-y-1">
-                                  <p className="italic leading-relaxed">{match[1].trim()}</p>
-                                  <p className="not-italic font-semibold text-slate-700 text-[11px] tracking-wide inline-flex items-center justify-center gap-1">
-                                    <span className="text-slate-400">•</span>
-                                    <span>{match[2].trim()}</span>
-                                  </p>
-                                </div>
-                              );
-                            }
-                            return <p className="text-[11px] italic text-slate-500 text-center">{cap}</p>;
-                          })()}
-                        </div>
-                      )}
-                    </React.Fragment>
-                  ))
+                        )}
+                      </React.Fragment>
+                    );
+                  })
                 ) : (
                   <p>{featuredLeader.bio}</p>
                 )}
@@ -486,6 +512,12 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
                 <p className="italic font-medium text-slate-800">
                   “{featuredLeader.quote}”
                 </p>
+              </div>
+
+              {/* Author Footer Credit */}
+              <div className="flex items-center justify-between pt-4 border-t border-slate-100 text-xs text-slate-500">
+                <span>Tác giả: <strong className="text-ussh-navy uppercase font-bold">{featuredLeader.author || 'THẢO QUYÊN'}</strong></span>
+                <span>Inside USSH • Trường ĐH KHXH&NV, ĐHQG-HCM</span>
               </div>
             </div>
           </div>
