@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/admin/'],
     },
-    sitemap: 'https://inside.hcmussh.edu.vn/sitemap.xml',
+    sitemap: 'https://inside-ussh-portal.vercel.app/sitemap.xml',
   };
 }

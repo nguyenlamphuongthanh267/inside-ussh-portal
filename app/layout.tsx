@@ -20,7 +20,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://inside.hcmussh.edu.vn'),
+  metadataBase: new URL('https://inside-ussh-portal.vercel.app'),
   title: {
     default: 'Inside USSH - Bản Tin Nội Bộ Trường ĐH KHXH&NV, ĐHQG-HCM',
     template: '%s | Inside USSH',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     'Giảng viên USSH',
     'Thông báo nội bộ',
   ],
-  authors: [{ name: 'Ban Biên Tập Inside USSH', url: 'https://inside.hcmussh.edu.vn' }],
+  authors: [{ name: 'Ban Biên Tập Inside USSH', url: 'https://inside-ussh-portal.vercel.app' }],
   creator: 'Trường Đại học Khoa học Xã hội và Nhân văn, ĐHQG-HCM',
   publisher: 'Trường Đại học Khoa học Xã hội và Nhân văn, ĐHQG-HCM',
   alternates: {
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: 'Inside USSH - Bản Tin Nội Bộ Trường ĐH KHXH&NV, ĐHQG-HCM',
     description:
       'Không gian kết nối, chia sẻ và lan tỏa giá trị nhân văn của cán bộ, giảng viên USSH.',
-    url: 'https://inside.hcmussh.edu.vn',
+    url: 'https://inside-ussh-portal.vercel.app',
     siteName: 'Inside USSH',
     locale: 'vi_VN',
     type: 'website',

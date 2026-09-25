@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { MOCK_NEWS_ARTICLES } from '@/constants/mockData';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://inside.hcmussh.edu.vn';
+  const baseUrl = 'https://inside-ussh-portal.vercel.app';
 
   const newsUrls: MetadataRoute.Sitemap = MOCK_NEWS_ARTICLES.map((article) => ({
     url: `${baseUrl}/news/${article.slug}`,

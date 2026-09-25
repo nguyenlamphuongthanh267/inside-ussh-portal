@@ -65,6 +65,6 @@ export function generateNewsJsonLd(article: {
         url: 'https://images.unsplash.com/photo-1592280771190-3e2e4d571952?w=200&auto=format&fit=crop&q=80',
       },
     },
-    mainEntityOfPage: `https://inside.hcmussh.edu.vn/news/${article.slug}`,
+    mainEntityOfPage: `https://inside-ussh-portal.vercel.app/news/${article.slug}`,
   };
 }
