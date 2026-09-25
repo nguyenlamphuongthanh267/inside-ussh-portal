@@ -201,7 +201,7 @@ export function Header() {
       }`}
     >
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-2 xl:gap-4">
+        <div className="flex items-center justify-between gap-2 xl:gap-3 overflow-hidden">
           {/* Brand Logo & Wordmark */}
           <a
             href="#home"
@@ -230,7 +230,7 @@ export function Header() {
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5 2xl:gap-2.5 text-xs xl:text-[13px] font-semibold shrink-0" aria-label="Menu chính">
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5 2xl:gap-2.5 text-xs xl:text-[13px] font-semibold min-w-0 overflow-hidden" aria-label="Menu chính">
             {NAV_ITEMS.map((item) => {
               const isActive = activeSection === item.href.replace('#', '');
 
@@ -456,16 +456,16 @@ export function Header() {
                   className="w-9 h-9 rounded-full object-cover border border-rose-200/90 dark:border-slate-700 shadow-sm bg-rose-50/80 shrink-0"
                 />
               </div>
-              <div className="text-left hidden lg:flex lg:flex-col justify-center shrink-0 min-w-max">
-                <div className="flex items-center gap-1.5 whitespace-nowrap">
-                  <span className="text-xs xl:text-[13px] font-extrabold text-ussh-navy dark:text-white leading-tight whitespace-nowrap">
+              <div className="text-left hidden lg:flex lg:flex-col justify-center max-w-[140px] xl:max-w-[200px] overflow-hidden">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-xs xl:text-[13px] font-extrabold text-ussh-navy dark:text-white leading-tight truncate">
                     {CURRENT_USER.name}
                   </span>
-                  <span className="px-1.5 py-0.5 text-[9.5px] font-bold rounded bg-red-100 text-ussh-accent dark:bg-red-950/80 dark:text-red-300 border border-red-200 dark:border-red-900/60 leading-none whitespace-nowrap shrink-0">
+                  <span className="px-1.5 py-0.5 text-[9px] font-bold rounded bg-red-100 text-ussh-accent dark:bg-red-950/80 dark:text-red-300 border border-red-200 dark:border-red-900/60 leading-none whitespace-nowrap shrink-0">
                     {CURRENT_USER.role}
                   </span>
                 </div>
-                <div className="text-[10px] xl:text-[10.5px] text-slate-500 dark:text-slate-400 font-medium leading-tight mt-0.5 whitespace-nowrap">
+                <div className="text-[10px] text-slate-500 dark:text-slate-400 font-medium leading-tight mt-0.5 truncate hidden xl:block">
                   {CURRENT_USER.department}
                 </div>
               </div>
