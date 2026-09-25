@@ -51,10 +51,10 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&auto=format&fit=crop&q=80',
+        url: 'https://inside-ussh-portal.vercel.app/images/og-preview.png',
         width: 1200,
         height: 630,
-        alt: 'Inside USSH - Bản Tin Nội Bộ',
+        alt: 'Inside USSH - Báo cáo thực hành đề án môn Quan hệ công chúng',
       },
     ],
   },
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     title: 'Inside USSH - Bản Tin Nội Bộ',
     description:
       'Cổng thông tin nội bộ dành cho giảng viên và cán bộ Trường ĐH KHXH&NV, ĐHQG-HCM.',
-    images: ['https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&auto=format&fit=crop&q=80'],
+    images: ['https://inside-ussh-portal.vercel.app/images/og-preview.png'],
   },
   robots: {
     index: true,
