@@ -29,14 +29,14 @@ export function PeopleSection({ people }: PeopleSectionProps) {
     <section
       id="people"
       className="scroll-mt-20 sm:scroll-mt-24 py-14 bg-ussh-cream-50 border-t border-ussh-border"
-      aria-label="Người Nhân Văn"
+      aria-label="Ký Nhân văn"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header matching mockup: "Người Nhân Văn ===" */}
+        {/* Header matching mockup: "Ký Nhân văn ===" */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
             <h2 className="text-xl sm:text-2xl font-bold text-ussh-navy tracking-tight font-sans">
-              Người Nhân Văn
+              Ký Nhân văn
             </h2>
             <div className="flex items-center gap-1">
               <span className="w-8 h-1 bg-ussh-accent rounded-full" />

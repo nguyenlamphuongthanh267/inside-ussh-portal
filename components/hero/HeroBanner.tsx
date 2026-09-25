@@ -402,7 +402,7 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-white/95 sticky top-0 z-20">
               <span className="text-xs font-bold uppercase tracking-wider text-ussh-accent">
-                Người Nhân Văn • Ký chân dung
+                Ký Nhân văn • Ký chân dung
               </span>
               <button
                 onClick={() => setIsMemoirOpen(false)}
@@ -539,7 +539,7 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
           >
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
               <span className="text-xs font-bold uppercase tracking-wider text-ussh-accent">
-                Chân dung Người Nhân Văn
+                Chân dung Ký Nhân văn
               </span>
               <button
                 onClick={() => setSelectedPerson(null)}

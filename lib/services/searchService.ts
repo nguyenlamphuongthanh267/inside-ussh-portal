@@ -45,7 +45,7 @@ export const POPULAR_SUGGESTIONS: PopularSuggestion[] = [
     targetId: 'people',
     actionType: 'open-memoir',
     modalId: 'ppl_ngo_van_le',
-    badgeLabel: 'Người Nhân Văn',
+    badgeLabel: 'Ký Nhân văn',
   },
   {
     keyword: 'Hội thảo quốc tế',
@@ -55,28 +55,22 @@ export const POPULAR_SUGGESTIONS: PopularSuggestion[] = [
     badgeLabel: 'Hội thảo',
   },
   {
-    keyword: 'Minigame tuần',
+    keyword: 'Minigame hằng tháng',
     targetId: 'entertainment',
     actionType: 'open-minigame',
     badgeLabel: 'Minigame',
   },
   {
-    keyword: 'Cơ sở Linh Xuân',
-    targetId: 'about',
+    keyword: 'Khoảnh khắc Nhân văn',
+    targetId: 'gallery',
     actionType: 'scroll',
-    badgeLabel: 'Giới thiệu',
+    badgeLabel: 'Khoảnh khắc',
   },
   {
     keyword: 'Sáng Quận 1 chiều Thủ Đức',
     targetId: 'entertainment',
     actionType: 'open-funny',
     badgeLabel: 'Góc Funny',
-  },
-  {
-    keyword: 'Triết lý khai phóng',
-    targetId: 'about',
-    actionType: 'scroll',
-    badgeLabel: 'Giới thiệu',
   },
 ];
 
@@ -86,18 +80,17 @@ export const CATEGORY_TARGET_MAP: Record<SearchCategoryFilter, string> = {
   all: 'home',
   news: 'news',
   people: 'people',
-  gallery: 'gallery',
-  about: 'about',
   entertainment: 'entertainment',
+  gallery: 'gallery',
+  about: 'home',
 };
 
 export const CATEGORY_FILTERS: { id: SearchCategoryFilter; label: string; targetId: string }[] = [
   { id: 'all', label: 'Tất cả', targetId: 'home' },
   { id: 'news', label: 'Tin tức', targetId: 'news' },
-  { id: 'people', label: 'Người Nhân Văn', targetId: 'people' },
-  { id: 'gallery', label: 'Khoảnh khắc', targetId: 'gallery' },
-  { id: 'about', label: 'Giới thiệu', targetId: 'about' },
+  { id: 'people', label: 'Ký Nhân văn', targetId: 'people' },
   { id: 'entertainment', label: 'Thư giãn', targetId: 'entertainment' },
+  { id: 'gallery', label: 'Khoảnh khắc', targetId: 'gallery' },
 ];
 
 export function searchAll(query: string, category: SearchCategoryFilter = 'all'): SearchResultItem[] {
@@ -148,7 +141,7 @@ export function searchAll(query: string, category: SearchCategoryFilter = 'all')
         results.push({
           id: `people_${p.id}`,
           type: 'people',
-          categoryLabel: 'Người Nhân Văn',
+          categoryLabel: 'Ký Nhân văn',
           badgeColor: 'bg-blue-50 text-blue-700 border-blue-200',
           title: `${p.academicTitle ? p.academicTitle + ' ' : ''}${p.name} - ${p.position}`,
           summary: p.quote || p.bio || `${p.position} tại ${p.facultyDepartment}`,
