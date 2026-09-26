@@ -71,6 +71,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { AutoScrollTop } from '@/components/layout/AutoScrollTop';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -87,6 +89,9 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col bg-[#FDFCF9] text-ussh-navy antialiased">
+        {/* Reset scroll on page reload or fresh load */}
+        <AutoScrollTop />
+
         {/* Skip to Main Content Link (WCAG AA Requirement) */}
         <a
           href="#main-content"

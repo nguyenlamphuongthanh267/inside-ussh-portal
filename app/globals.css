@@ -79,6 +79,8 @@ html.dark nav button:hover {
 
 /* Background Sections: Chuyển toàn bộ nền trắng/kem sang đen/than đậm */
 html.dark section,
+html.dark article,
+html.dark .bg-\[\#FDFCF9\],
 html.dark .bg-ussh-cream-50,
 html.dark .bg-ussh-cream-100,
 html.dark .bg-\[\#FBF9F5\],

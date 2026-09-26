@@ -17,14 +17,28 @@ const MEMBERS: Member[] = [
   { name: 'Nguyễn Phương Thảo', mssv: '2456030091' },
 ];
 
+import { usePathname } from 'next/navigation';
+
 const COUNTDOWN_TOTAL = 8000;
 
+// Module-level flag: resets only when browser hard reloads (F5 / Refresh)
+let hasShownInitialOnReload = false;
+
 export function ProjectIntroModal() {
-  const [isOpen, setIsOpen] = useState(true);
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
   const [timeLeft, setTimeLeft] = useState(8);
   const [isPaused, setIsPaused] = useState(false);
   const [progress, setProgress] = useState(100);
   const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Only auto-trigger when on homepage and it's a page reload / initial load
+    if (!hasShownInitialOnReload && pathname === '/') {
+      hasShownInitialOnReload = true;
+      setIsOpen(true);
+    }
+  }, [pathname]);
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const animationFrameRef = useRef<number | null>(null);
