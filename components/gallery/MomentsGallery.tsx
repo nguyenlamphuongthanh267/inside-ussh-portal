@@ -62,35 +62,35 @@ export function MomentsGallery({ moments }: MomentsGalleryProps) {
   return (
     <section
       id="gallery"
-      className="scroll-mt-20 sm:scroll-mt-24 py-16 bg-white border-t border-slate-100"
+      className="scroll-mt-20 sm:scroll-mt-24 py-16 bg-white dark:bg-[#0b1120] border-t border-slate-100 dark:border-slate-800 transition-colors"
       aria-label="Khoảnh khắc Nhân Văn"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-ussh-accent uppercase tracking-wider mb-2">
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-ussh-accent dark:text-amber-400 uppercase tracking-wider mb-2">
               <ImageIcon className="w-4 h-4" />
               <span>Góc ảnh sự kiện</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-ussh-navy tracking-tight font-sans uppercase">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-ussh-navy dark:text-white tracking-tight font-sans uppercase">
               Khoảnh khắc Nhân Văn
             </h2>
-            <p className="text-slate-500 text-xs sm:text-sm mt-1 max-w-2xl font-normal">
+            <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1 max-w-2xl font-normal">
               Ghi lại những khoảnh khắc chân thực, giàu cảm xúc trong các sự kiện Lễ Khai giảng và đời sống cán bộ, giảng viên Nhà trường.
             </p>
           </div>
 
           {/* Filter Tabs */}
-          <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-xl overflow-x-auto scrollbar-none max-w-full">
+          <div className="flex items-center gap-1.5 p-1 bg-slate-100 dark:bg-slate-800/90 border border-transparent dark:border-slate-700/60 rounded-xl overflow-x-auto scrollbar-none max-w-full">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
                 className={`px-3.5 py-2 sm:py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all shrink-0 ${
                   activeCategory === cat.id
-                    ? 'bg-white text-ussh-navy shadow-xs'
-                    : 'text-slate-600 hover:text-ussh-navy'
+                    ? 'bg-white dark:bg-slate-700 text-ussh-navy dark:text-white shadow-xs'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-ussh-navy dark:hover:text-white'
                 }`}
               >
                 {cat.label}
@@ -105,7 +105,7 @@ export function MomentsGallery({ moments }: MomentsGalleryProps) {
             <div
               key={moment.id}
               onClick={() => handleOpenLightbox(moment)}
-              className={`group relative rounded-2xl overflow-hidden shadow-soft bg-slate-100 border border-slate-200/80 cursor-pointer transition-all duration-300 hover:shadow-card hover:-translate-y-1 ${
+              className={`group relative rounded-2xl overflow-hidden shadow-soft bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 cursor-pointer transition-all duration-300 hover:shadow-card hover:-translate-y-1 ${
                 idx === 0 ? 'sm:col-span-2 aspect-[16/10]' : 'aspect-[4/3]'
               }`}
             >

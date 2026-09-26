@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   ArrowLeft,
@@ -23,6 +23,20 @@ export function FunnyStoryPageView() {
   const [copied, setCopied] = useState(false);
   const [selectedTransport, setSelectedTransport] = useState<string | null>(null);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedLike = localStorage.getItem('inside_ussh_funny_liked');
+      if (savedLike === 'true') {
+        setIsLiked(true);
+        setLikes((prev) => prev + 1);
+      }
+      const savedTransport = localStorage.getItem('inside_ussh_funny_transport');
+      if (savedTransport) {
+        setSelectedTransport(savedTransport);
+      }
+    }
+  }, []);
+
   const transportOptions = [
     { id: 'ninja', label: 'Ninja phượt thủ (Xe máy áo chống nắng, chống gió)', icon: '🏍️' },
     { id: 'thien-su', label: 'Thiền sư xe buýt (Chế độ ngủ bù & ôm xấp giáo án)', icon: '🚌' },
@@ -34,9 +48,22 @@ export function FunnyStoryPageView() {
     if (!isLiked) {
       setLikes((prev) => prev + 1);
       setIsLiked(true);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('inside_ussh_funny_liked', 'true');
+      }
     } else {
       setLikes((prev) => prev - 1);
       setIsLiked(false);
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('inside_ussh_funny_liked');
+      }
+    }
+  };
+
+  const handleSelectTransport = (id: string) => {
+    setSelectedTransport(id);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('inside_ussh_funny_transport', id);
     }
   };
 
@@ -156,7 +183,7 @@ export function FunnyStoryPageView() {
         {/* Story Paragraphs */}
         <div className="space-y-5 text-slate-700 dark:text-slate-200 text-[15px] sm:text-base leading-relaxed font-normal">
           {story.paragraphs.map((para, i) => (
-            <p key={i} className="text-justify leading-relaxed">
+            <p key={i} className="text-left sm:text-justify leading-relaxed">
               {para}
             </p>
           ))}
@@ -179,7 +206,7 @@ export function FunnyStoryPageView() {
               return (
                 <button
                   key={opt.id}
-                  onClick={() => setSelectedTransport(opt.id)}
+                  onClick={() => handleSelectTransport(opt.id)}
                   className={`p-4 rounded-2xl text-left border transition-all flex items-center gap-3 ${
                     isSelected
                       ? 'bg-amber-500/10 dark:bg-amber-500/20 border-amber-500 dark:border-amber-400 text-ussh-navy dark:text-white font-bold shadow-xs'

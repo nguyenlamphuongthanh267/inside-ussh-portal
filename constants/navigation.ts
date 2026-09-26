@@ -14,12 +14,12 @@ export const NAV_ITEMS: NavItem[] = [
     dropdownItems: [
       {
         label: 'Minigame hằng tháng',
-        href: '#entertainment',
+        href: '/phut-thu-gian/minigame',
         description: 'Khoanh chữ - Tìm dấu ấn Nhân Văn',
       },
       {
         label: 'Bài Funny',
-        href: '#entertainment',
+        href: '/phut-thu-gian/chuyen-vui',
         description: 'Sáng Quận 1, chiều Thủ Đức: Khi công chức Nhân Văn hoá phượt thủ',
       },
     ],
@@ -52,20 +52,20 @@ export const FOOTER_LINKS = {
     { label: 'Cổng thông tin Đào tạo', href: 'https://hcmussh.edu.vn', external: true },
     { label: 'Hệ thống Email Công vụ VNU-HCM', href: 'https://mail.vnuhcm.edu.vn', external: true },
     { label: 'Thư viện Trung tâm ĐHQG-HCM', href: 'https://vnulib.edu.vn', external: true },
-    { label: 'Cổng Quản lý Khoa học & Công nghệ', href: '#', external: false },
-    { label: 'Chi hội Nữ trí thức & Công đoàn', href: '#', external: false },
+    { label: 'Cổng Quản lý Khoa học & Công nghệ', href: 'https://hcmussh.edu.vn', external: true },
+    { label: 'Công đoàn & Đoàn thể Nhà trường', href: 'https://hcmussh.edu.vn', external: true },
   ],
   contacts: {
-    campus1: '10-12 Đinh Tiên Hoàng, P. Sài Gòn, TP.HCM',
-    campus2: 'Khu đô thị ĐHQG-HCM, P. Linh Xuân, TP.HCM',
+    campus1: '10-12 Đinh Tiên Hoàng, P. Bến Nghé, Quận 1, TP.HCM',
+    campus2: 'Khu đô thị ĐHQG-HCM, TP. Thủ Đức, TP.HCM',
     phone: '(028) 3829 3828',
     email: 'insideussh@gmail.com',
     website: 'https://hcmussh.edu.vn',
   },
   socials: [
-    { name: 'Facebook', href: 'https://facebook.com', icon: 'Facebook' },
-    { name: 'YouTube', href: 'https://youtube.com', icon: 'Youtube' },
-    { name: 'Zalo', href: 'https://zalo.me', icon: 'MessageCircle' },
-    { name: 'LinkedIn', href: 'https://linkedin.com', icon: 'Linkedin' },
+    { name: 'Facebook', href: 'https://www.facebook.com/ussh.vnuhcm', icon: 'Facebook' },
+    { name: 'YouTube', href: 'https://www.youtube.com/@HCMUSSHChannel', icon: 'Youtube' },
+    { name: 'Zalo', href: 'https://zalo.me/usshvnuhcm', icon: 'MessageCircle' },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/school/ussh-vnuhcm', icon: 'Linkedin' },
   ],
 };

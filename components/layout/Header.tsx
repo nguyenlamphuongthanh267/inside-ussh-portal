@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import {
   Search,
   Bell,
@@ -13,6 +14,7 @@ import {
   Vote,
   ExternalLink,
   X,
+  CheckCheck,
 } from 'lucide-react';
 import { NAV_ITEMS, CURRENT_USER } from '@/constants/navigation';
 import { MobileMenu } from './MobileMenu';
@@ -26,11 +28,26 @@ export function Header() {
   const [activeSection, setActiveSection] = useState('home');
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [notifOpen, setNotifOpen] = useState(false);
+  const [isNotifRead, setIsNotifRead] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const dropdownRef = useRef<HTMLDivElement>(null);
   const notifRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('inside_ussh_notifs_read');
+      if (stored === 'true') setIsNotifRead(true);
+    }
+  }, []);
+
+  const handleMarkAllRead = () => {
+    setIsNotifRead(true);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('inside_ussh_notifs_read', 'true');
+    }
+  };
 
   const handleNavigateSection = (sectionId: string) => {
     setSearchOpen(false);
@@ -298,38 +315,32 @@ export function Header() {
                         <div className="px-3 py-1.5 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
                           Chuyên mục thư giãn
                         </div>
-                        <a
-                          href="#entertainment"
-                          onClick={(e) => {
-                            setDropdownOpen(false);
-                            handleNavClick(e, '#entertainment');
-                          }}
-                          className="flex items-start gap-3 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-ussh-cream-100 dark:hover:bg-slate-700 hover:text-ussh-navy transition-colors group"
+                        <Link
+                          href="/phut-thu-gian/minigame"
+                          onClick={() => setDropdownOpen(false)}
+                          className="flex items-start gap-3 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-ussh-cream-100 dark:hover:bg-slate-700 hover:text-ussh-navy transition-colors group rounded-xl"
                         >
-                          <div className="p-1.5 rounded-lg bg-red-50 text-ussh-accent group-hover:bg-red-100">
+                          <div className="p-1.5 rounded-lg bg-red-50 dark:bg-red-950/40 text-ussh-accent group-hover:bg-red-100">
                             <Gamepad2 className="w-4 h-4" />
                           </div>
                           <div>
                             <div className="font-semibold text-xs text-slate-800 dark:text-slate-100">Minigame hằng tháng</div>
                             <div className="text-[11px] text-slate-500 dark:text-slate-400">Khoanh chữ & đố vui trí tuệ</div>
                           </div>
-                        </a>
-                        <a
-                          href="#funny"
-                          onClick={(e) => {
-                            setDropdownOpen(false);
-                            handleNavClick(e, '#funny');
-                          }}
-                          className="flex items-start gap-3 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-ussh-cream-100 dark:hover:bg-slate-700 hover:text-ussh-navy transition-colors group"
+                        </Link>
+                        <Link
+                          href="/phut-thu-gian/chuyen-vui"
+                          onClick={() => setDropdownOpen(false)}
+                          className="flex items-start gap-3 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-ussh-cream-100 dark:hover:bg-slate-700 hover:text-ussh-navy transition-colors group rounded-xl"
                         >
-                          <div className="p-1.5 rounded-lg bg-amber-50 text-amber-600 group-hover:bg-amber-100">
+                          <div className="p-1.5 rounded-lg bg-amber-50 dark:bg-amber-950/40 text-amber-600 group-hover:bg-amber-100">
                             <Smile className="w-4 h-4" />
                           </div>
                           <div>
                             <div className="font-semibold text-xs text-slate-800 dark:text-slate-100">Bài funny văn phòng</div>
                             <div className="text-[11px] text-slate-500 dark:text-slate-400">Tiếng cười sau giờ lên lớp</div>
                           </div>
-                        </a>
+                        </Link>
                       </div>
                     )}
                   </div>
@@ -407,18 +418,31 @@ export function Header() {
               <button
                 onClick={() => setNotifOpen(!notifOpen)}
                 className="relative p-2 text-slate-700 dark:text-slate-300 hover:text-ussh-navy dark:hover:text-white hover:bg-white/70 dark:hover:bg-slate-800 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ussh-navy cursor-pointer"
-                aria-label="Xem 3 thông báo mới"
+                aria-label={isNotifRead ? 'Thông báo nội bộ' : 'Xem 3 thông báo mới'}
               >
                 <Bell className="w-5 h-5" />
-                <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-red-600 rounded-full ring-2 ring-white dark:ring-slate-900 animate-pulse" />
+                {!isNotifRead && (
+                  <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-red-600 rounded-full ring-2 ring-white dark:ring-slate-900 animate-pulse" />
+                )}
               </button>
 
               {/* Notification Popover */}
               {notifOpen && (
                 <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-slate-800 rounded-2xl shadow-hover border border-slate-100 dark:border-slate-700 py-3 z-50 animate-in fade-in zoom-in-95 duration-150">
                   <div className="flex items-center justify-between px-4 pb-2 border-b border-slate-100 dark:border-slate-700">
-                    <span className="text-xs font-bold text-ussh-navy dark:text-white">Thông báo nội bộ mới</span>
-                    <span className="text-[11px] text-ussh-accent font-semibold">3 tin chưa đọc</span>
+                    <span className="text-xs font-bold text-ussh-navy dark:text-white">Thông báo nội bộ</span>
+                    {isNotifRead ? (
+                      <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-medium inline-flex items-center gap-1">
+                        <CheckCheck className="w-3.5 h-3.5" /> Đã đọc hết
+                      </span>
+                    ) : (
+                      <button
+                        onClick={handleMarkAllRead}
+                        className="text-[11px] text-ussh-accent dark:text-amber-400 hover:underline font-semibold cursor-pointer"
+                      >
+                        Đánh dấu đã đọc
+                      </button>
+                    )}
                   </div>
                   <div className="divide-y divide-slate-50 dark:divide-slate-700/60 max-h-72 overflow-y-auto">
                     <div className="p-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 text-xs transition-colors cursor-pointer">

@@ -118,6 +118,11 @@ export function MobileMenu({ isOpen, onClose, activeSection }: MobileMenuProps) 
         return;
       }
 
+      if (href.startsWith('/')) {
+        window.location.href = href;
+        return;
+      }
+
       if (href.startsWith('#')) {
         const targetId = href.replace('#', '');
         const element = document.getElementById(targetId);

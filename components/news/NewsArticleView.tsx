@@ -181,7 +181,7 @@ export function NewsArticleView({ article }: NewsArticleViewProps) {
         <div className="space-y-5 text-slate-700 dark:text-slate-200 text-[15px] sm:text-base leading-relaxed font-normal">
           {article.contentParagraphs?.map((para, i) => (
             <React.Fragment key={i}>
-              <p className="text-justify leading-relaxed">{para}</p>
+              <p className="text-left sm:text-justify leading-relaxed">{para}</p>
 
               {/* Secondary Image insertion at paragraph 3 */}
               {i === 3 && article.secondaryImage && (

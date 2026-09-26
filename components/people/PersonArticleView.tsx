@@ -174,7 +174,7 @@ export function PersonArticleView({ person }: PersonArticleViewProps) {
 
             return (
               <React.Fragment key={i}>
-                <p className="text-justify leading-relaxed">{para}</p>
+                <p className="text-left sm:text-justify leading-relaxed">{para}</p>
 
                 {/* Secondary Photo insertion at midpoint (Shrink-to-fit container) */}
                 {i === 4 && person.secondaryImage && (
