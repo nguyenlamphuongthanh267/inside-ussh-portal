@@ -427,19 +427,25 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
                 </div>
               </div>
 
-              {/* Primary Image */}
+              {/* Primary Image (Khung ảnh tự nhiên, không crop/zoom, giữ trọn vẹn toàn bộ ảnh) */}
               <div className="space-y-2">
-                <div className="rounded-2xl overflow-hidden max-h-[460px] bg-slate-100 border border-slate-200">
+                <div className="rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-soft">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={featuredLeader.avatarUrl}
                     alt={featuredLeader.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-auto object-contain block"
                   />
                 </div>
-                <p className="text-[11px] italic text-slate-500 text-center">
-                  GS.TS.NGND Ngô Văn Lệ trong buổi trò chuyện tại nhà riêng. Ảnh: Thảo Quyên
-                </p>
+                <div className="text-[11.5px] text-slate-500 text-center font-normal px-2 space-y-1">
+                  <p className="italic leading-relaxed">
+                    GS.TS.NGND Ngô Văn Lệ trong buổi trò chuyện tại nhà riêng.
+                  </p>
+                  <p className="not-italic font-semibold text-slate-700 text-[11px] tracking-wide inline-flex items-center justify-center gap-1">
+                    <span className="text-slate-400">•</span>
+                    <span>Ảnh: Thảo Quyên</span>
+                  </p>
+                </div>
               </div>
 
               {/* Sapo Lead Paragraph (Roboto text 13, in đậm, khung border cách điệu giống tin tức) */}
@@ -472,12 +478,12 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
                         <p>{para}</p>
                         {i === 4 && featuredLeader.secondaryImage && (
                           <div className="my-6 space-y-2">
-                            <div className="rounded-2xl overflow-hidden max-h-[420px] bg-slate-100 border border-slate-200">
+                            <div className="rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-soft">
                               {/* eslint-disable-next-line @next/next/no-img-element */}
                               <img
                                 src={featuredLeader.secondaryImage.url}
                                 alt=""
-                                className="w-full h-full object-cover"
+                                className="w-full h-auto object-contain block"
                               />
                             </div>
                             {(() => {
