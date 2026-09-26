@@ -220,7 +220,7 @@ export function PersonArticleView({ person }: PersonArticleViewProps) {
                 <Award className="w-5 h-5 text-amber-300" />
               </div>
               <div className="text-center sm:text-left">
-                <p className="text-base sm:text-lg italic font-serif leading-relaxed text-slate-100">
+                <p className="text-base sm:text-lg italic font-sans leading-relaxed text-slate-100">
                   “{person.quote}”
                 </p>
                 <div className="mt-3 text-xs uppercase tracking-wider text-amber-300 font-bold">
@@ -232,7 +232,7 @@ export function PersonArticleView({ person }: PersonArticleViewProps) {
         )}
 
         {/* Author Signature */}
-        <div className="mt-8 pt-6 border-t border-slate-200 flex justify-end">
+        <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 flex justify-end">
           <div className="text-right">
             <div className="text-xs text-slate-400 uppercase tracking-wider font-semibold">Tác giả bài viết</div>
             <div className="text-base font-bold uppercase text-ussh-navy tracking-wide mt-0.5">

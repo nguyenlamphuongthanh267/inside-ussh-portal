@@ -160,7 +160,7 @@ export function NewsArticleView({ article }: NewsArticleViewProps) {
   };
 
   return (
-    <article className="min-h-screen bg-[#FDFCF9] dark:bg-[#0b1120] text-slate-800 dark:text-slate-100 pb-20">
+    <article className="min-h-screen bg-[#FDFCF9] dark:bg-[#0b1120] text-slate-800 dark:text-slate-100 pb-28 sm:pb-20">
       {/* Reading Progress Indicator */}
       <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-slate-100 dark:bg-slate-800">
         <div
@@ -361,9 +361,19 @@ export function NewsArticleView({ article }: NewsArticleViewProps) {
           </div>
         )}
 
+        {/* Author Signature */}
+        <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 flex justify-end">
+          <div className="text-right">
+            <div className="text-xs text-slate-400 dark:text-slate-500 uppercase tracking-wider font-semibold">Tác giả bài viết</div>
+            <div className="text-base font-bold uppercase text-ussh-navy dark:text-amber-400 tracking-wide mt-0.5">
+              {article.author.name}
+            </div>
+          </div>
+        </div>
+
         {/* Tags list */}
         {article.tags && article.tags.length > 0 && (
-          <div className="mt-10 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center gap-2">
+          <div className="mt-6 pt-5 border-t border-slate-200/60 dark:border-slate-800/60 flex flex-wrap items-center gap-2">
             <span className="text-xs font-semibold text-slate-400 dark:text-slate-400 inline-flex items-center gap-1">
               <Tag className="w-3.5 h-3.5" />
               Chủ đề:
@@ -378,16 +388,6 @@ export function NewsArticleView({ article }: NewsArticleViewProps) {
             ))}
           </div>
         )}
-
-        {/* Author Signature */}
-        <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 flex justify-end">
-          <div className="text-right">
-            <div className="text-xs text-slate-400 uppercase tracking-wider font-semibold">Tác giả bài viết</div>
-            <div className="text-base font-bold uppercase text-ussh-navy dark:text-amber-400 tracking-wide mt-0.5">
-              {article.author.name}
-            </div>
-          </div>
-        </div>
 
         {/* Bottom Back Button & Continue Exploring */}
         <div className="mt-12 pt-8 border-t border-slate-200/80 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">

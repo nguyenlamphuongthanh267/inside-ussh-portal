@@ -433,7 +433,7 @@ export function Header() {
 
               {/* Notification Popover */}
               {notifOpen && (
-                <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-slate-800 rounded-2xl shadow-hover border border-slate-100 dark:border-slate-700 py-3 z-50 animate-in fade-in zoom-in-95 duration-150">
+                <div className="fixed inset-x-3 sm:inset-x-auto top-16 sm:top-full sm:right-0 mt-1 sm:mt-2 w-auto sm:w-80 bg-white dark:bg-slate-800 rounded-2xl shadow-hover border border-slate-200/90 dark:border-slate-700 py-3 z-50 animate-in fade-in zoom-in-95 duration-150">
                   <div className="flex items-center justify-between px-4 pb-2 border-b border-slate-100 dark:border-slate-700">
                     <span className="text-xs font-bold text-ussh-navy dark:text-white">Thông báo nội bộ</span>
                     {isNotifRead ? (
