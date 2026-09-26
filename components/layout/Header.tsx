@@ -50,6 +50,9 @@ export function Header() {
   };
 
   const handleNavigateSection = (sectionId: string) => {
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('inside_ussh_taskbar_nav', 'true');
+    }
     setSearchOpen(false);
     setSearchQuery('');
     if (sectionId === 'home') {
@@ -76,6 +79,9 @@ export function Header() {
   };
 
   const handleSelectSuggestion = (sug: PopularSuggestion) => {
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('inside_ussh_taskbar_nav', 'true');
+    }
     setSearchOpen(false);
     setSearchQuery('');
 
@@ -102,6 +108,9 @@ export function Header() {
   };
 
   const handleSelectSearchResult = (item: SearchResultItem) => {
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('inside_ussh_taskbar_nav', 'true');
+    }
     setSearchOpen(false);
     setSearchQuery('');
 
@@ -131,6 +140,10 @@ export function Header() {
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string
   ) => {
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('inside_ussh_taskbar_nav', 'true');
+    }
+
     if (href === '#home') {
       if (typeof window !== 'undefined' && window.location.pathname !== '/') {
         window.location.href = '/';

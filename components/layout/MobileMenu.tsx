@@ -30,6 +30,9 @@ export function MobileMenu({ isOpen, onClose, activeSection }: MobileMenuProps) 
   }, [searchQuery]);
 
   const handleSelectSearchResult = (item: SearchResultItem) => {
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('inside_ussh_taskbar_nav', 'true');
+    }
     onClose();
     if (item.routeUrl) {
       window.location.href = item.routeUrl;
@@ -64,6 +67,9 @@ export function MobileMenu({ isOpen, onClose, activeSection }: MobileMenuProps) 
   };
 
   const handleSelectSuggestion = (sug: PopularSuggestion) => {
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('inside_ussh_taskbar_nav', 'true');
+    }
     onClose();
     if (sug.routeUrl) {
       window.location.href = sug.routeUrl;
@@ -103,6 +109,9 @@ export function MobileMenu({ isOpen, onClose, activeSection }: MobileMenuProps) 
   ) => {
     e.preventDefault();
     onClose();
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('inside_ussh_taskbar_nav', 'true');
+    }
 
     // Small delay to allow the mobile drawer to close before scrolling
     setTimeout(() => {

@@ -21,9 +21,6 @@ import { usePathname } from 'next/navigation';
 
 const COUNTDOWN_TOTAL = 8000;
 
-// Module-level flag: resets only when browser hard reloads (F5 / Refresh)
-let hasShownInitialOnReload = false;
-
 export function ProjectIntroModal() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
@@ -33,9 +30,38 @@ export function ProjectIntroModal() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Only auto-trigger when on homepage and it's a page reload / initial load
-    if (!hasShownInitialOnReload && pathname === '/') {
-      hasShownInitialOnReload = true;
+    if (typeof window === 'undefined') return;
+
+    // 1. Check if navigation was initiated by a taskbar click / internal navigation
+    const isFromTaskbar = sessionStorage.getItem('inside_ussh_taskbar_nav') === 'true';
+    if (isFromTaskbar) {
+      // Clear the temporary flag so future reloads can still trigger
+      sessionStorage.removeItem('inside_ussh_taskbar_nav');
+      return;
+    }
+
+    // 2. Check if this is a hard browser reload (F5 / Refresh)
+    let isPageReload = false;
+    try {
+      const navEntries = performance.getEntriesByType('navigation');
+      if (navEntries.length > 0) {
+        isPageReload = (navEntries[0] as PerformanceNavigationTiming).type === 'reload';
+      } else if ((window.performance as unknown as { navigation?: { type: number } })?.navigation?.type === 1) {
+        isPageReload = true;
+      }
+    } catch {
+      // Ignore
+    }
+
+    // 3. Check if user entered via direct web link for the first time in this tab session
+    const hasVisitedInSession = sessionStorage.getItem('inside_ussh_entered_session') === 'true';
+
+    // TRIGGER RULES:
+    // Only trigger on homepage ('/') AND:
+    // (a) when reloading the page (F5 / Refresh)
+    // OR (b) when first visiting via web link in this session
+    if (pathname === '/' && (isPageReload || !hasVisitedInSession)) {
+      sessionStorage.setItem('inside_ussh_entered_session', 'true');
       setIsOpen(true);
     }
   }, [pathname]);
