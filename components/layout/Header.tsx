@@ -230,7 +230,7 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-40 transition-all duration-300 ${
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         isScrolled
           ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-soft py-2 sm:py-2.5 border-b border-slate-200/80 dark:border-slate-800'
           : 'bg-ussh-cream-100 dark:bg-slate-900 py-2.5 sm:py-3.5 border-b border-ussh-border dark:border-slate-800'
@@ -270,24 +270,6 @@ export function Header() {
             {NAV_ITEMS.map((item) => {
               const isActive = activeSection === item.href.replace('#', '');
 
-              // Regular link item
-              if (!item.hasDropdown) {
-                return (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    onClick={(e) => handleNavClick(e, item.href)}
-                    className={`px-2 xl:px-2.5 py-1.5 transition-colors font-medium whitespace-nowrap shrink-0 ${
-                      isActive
-                        ? 'text-ussh-navy dark:text-white font-bold'
-                        : 'text-slate-700 dark:text-slate-300 hover:text-ussh-navy dark:hover:text-white'
-                    } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ussh-navy`}
-                  >
-                    {item.label}
-                  </a>
-                );
-              }
-
               // Dropdown for "Phút thư giãn"
               if (item.hasDropdown) {
                 return (
@@ -296,7 +278,7 @@ export function Header() {
                       onClick={() => setDropdownOpen(!dropdownOpen)}
                       className={`inline-flex items-center gap-1 px-2 xl:px-2.5 py-1.5 transition-colors font-medium cursor-pointer whitespace-nowrap shrink-0 ${
                         dropdownOpen || isActive
-                          ? 'text-ussh-navy dark:text-white font-bold'
+                          ? 'text-ussh-accent dark:text-amber-400 font-bold'
                           : 'text-slate-700 dark:text-slate-300 hover:text-ussh-navy dark:hover:text-white'
                       } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ussh-navy`}
                       aria-expanded={dropdownOpen}
@@ -347,7 +329,7 @@ export function Header() {
                 );
               }
 
-              // Standard Link (No button highlight box on Trang chủ or others)
+              // Standard Link
               return (
                 <a
                   key={item.href}
@@ -355,7 +337,7 @@ export function Header() {
                   onClick={(e) => handleNavClick(e, item.href)}
                   className={`px-2 xl:px-2.5 py-1.5 transition-colors font-medium whitespace-nowrap shrink-0 ${
                     isActive
-                      ? 'text-ussh-accent font-bold'
+                      ? 'text-ussh-accent dark:text-amber-400 font-bold'
                       : 'text-slate-700 dark:text-slate-300 hover:text-ussh-navy dark:hover:text-white'
                   } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ussh-navy`}
                 >
