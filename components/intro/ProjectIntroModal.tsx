@@ -224,22 +224,24 @@ export function ProjectIntroModal() {
                   <span className="text-[9px] text-slate-400 font-semibold">5 thành viên</span>
                 </div>
 
-                {/* 2-column grid — always 2 cols, compact rows */}
-                <div className="grid grid-cols-2 gap-1.5">
+                {/* Members list: 1 col on mobile, 2 cols on desktop */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
                   {MEMBERS.map((m, idx) => (
                     <div
                       key={m.mssv}
-                      className="flex items-center justify-between px-2.5 py-1.5 rounded-lg border bg-slate-50 border-slate-200"
+                      className={`flex items-center justify-between px-2.5 py-1.5 rounded-lg border bg-slate-50 border-slate-200 ${
+                        idx === 4 ? 'sm:col-span-2' : ''
+                      }`}
                     >
-                      <div className="flex items-center gap-2 min-w-0">
+                      <div className="flex items-center gap-2 min-w-0 flex-1">
                         <span className="w-5 h-5 rounded-full bg-ussh-navy text-white text-[10px] font-black flex items-center justify-center shrink-0">
                           {idx + 1}
                         </span>
-                        <div className="min-w-0">
-                          <div className="text-[10.5px] font-black text-slate-800 whitespace-nowrap">
+                        <div className="min-w-0 flex-1 flex items-center justify-between gap-1.5">
+                          <span className="text-[10.5px] font-black text-slate-800 truncate">
                             {m.name}
-                          </div>
-                          <div className="text-[9px] text-slate-400 font-mono">MSSV: {m.mssv}</div>
+                          </span>
+                          <span className="text-[9.5px] text-slate-400 font-mono shrink-0">MSSV: {m.mssv}</span>
                         </div>
                       </div>
                     </div>

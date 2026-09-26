@@ -297,30 +297,30 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
                 <Link
                   id="minigame"
                   href="/phut-thu-gian/minigame"
-                  className="bg-[#F8EFE9] border border-[#E8D8CC] rounded-2xl p-3.5 sm:p-4 shadow-soft hover:shadow-card transition-all cursor-pointer group flex items-center justify-between gap-3 block"
+                  className="bg-[#F8EFE9] border border-[#E8D8CC] rounded-2xl p-3.5 sm:p-4 shadow-soft hover:shadow-card transition-all cursor-pointer group flex items-center justify-between gap-3 block overflow-hidden max-w-full"
                 >
-                  <div className="flex items-center gap-3 min-w-0">
+                  <div className="flex items-center gap-3 min-w-0 flex-1">
                     {/* Badge A */}
                     <div className="w-8 h-8 rounded-lg bg-ussh-accent text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-2xs">
                       A
                     </div>
 
                     {/* Crossword Thumbnail Icon */}
-                    <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-xl bg-white border border-slate-200/80 p-1 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform overflow-hidden">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white border border-slate-200/80 p-1 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform overflow-hidden">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src="/images/docx/image20.png"
                         alt="Bảng rừng chữ Minigame"
-                        className="w-full h-full object-contain"
+                        className="w-full h-full max-w-full max-h-full object-contain block"
                       />
                     </div>
 
                     {/* Text Info */}
-                    <div className="min-w-0">
+                    <div className="min-w-0 flex-1">
                       <div className="text-[10px] font-bold uppercase tracking-wider text-ussh-accent">
                         MINIGAME HẰNG THÁNG
                       </div>
-                      <h3 className="font-bold text-xs sm:text-sm text-ussh-navy group-hover:text-ussh-accent transition-colors leading-snug font-sans">
+                      <h3 className="font-bold text-xs sm:text-sm text-ussh-navy group-hover:text-ussh-accent transition-colors leading-snug font-sans truncate">
                         Tổng giải thưởng: 5.000.000đ
                       </h3>
                       <div className="inline-flex items-center gap-1 text-[11px] font-bold text-ussh-accent mt-1 group-hover:underline">
@@ -335,27 +335,27 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
                 <Link
                   id="funny"
                   href="/phut-thu-gian/chuyen-vui"
-                  className="bg-[#F8EFE9] border border-[#E8D8CC] rounded-2xl p-3.5 sm:p-4 shadow-soft hover:shadow-card transition-all cursor-pointer group flex items-center justify-between gap-3 relative block"
+                  className="bg-[#F8EFE9] border border-[#E8D8CC] rounded-2xl p-3.5 sm:p-4 shadow-soft hover:shadow-card transition-all cursor-pointer group flex items-center justify-between gap-3 relative block overflow-hidden max-w-full"
                 >
                   <span id="funny-stories" className="scroll-mt-24 absolute top-0 left-0 pointer-events-none" />
-                  <div className="flex items-center gap-3 min-w-0">
+                  <div className="flex items-center gap-3 min-w-0 flex-1">
                     {/* Badge B */}
                     <div className="w-8 h-8 rounded-lg bg-ussh-accent text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-2xs">
                       B
                     </div>
 
                     {/* Funny Illustration Thumbnail */}
-                    <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-xl bg-white border border-slate-200/80 p-1 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform overflow-hidden">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white border border-slate-200/80 p-1 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform overflow-hidden">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src="/images/docx/image2.png"
                         alt="Minh họa Funny"
-                        className="w-full h-full object-contain"
+                        className="w-full h-full max-w-full max-h-full object-contain block"
                       />
                     </div>
 
                     {/* Text Info */}
-                    <div className="min-w-0">
+                    <div className="min-w-0 flex-1">
                       <div className="text-[10px] font-bold uppercase tracking-wider text-amber-600">
                         FUNNY
                       </div>

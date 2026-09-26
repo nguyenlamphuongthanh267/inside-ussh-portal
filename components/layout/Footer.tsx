@@ -65,7 +65,7 @@ export function Footer() {
       <div className="border-b border-white/10 py-8 bg-ussh-navy-dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo & University Full Name */}
-          <div className="flex items-center gap-4 text-center md:text-left">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 text-center sm:text-left">
             {/* USSH Official Logo */}
             <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center shrink-0 bg-white/10 rounded-2xl p-2 border border-white/10 backdrop-blur-xs">
               {/* eslint-disable-next-line @next/next/no-img-element */}

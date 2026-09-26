@@ -78,9 +78,9 @@ export function EntertainmentSection() {
           <Link
             id="minigame"
             href="/phut-thu-gian/minigame"
-            className="bg-[#F8EFE9] border border-[#E8D8CC] rounded-3xl p-5 sm:p-6 shadow-soft hover:shadow-card transition-all cursor-pointer group flex items-center justify-between gap-4 block"
+            className="bg-[#F8EFE9] border border-[#E8D8CC] rounded-3xl p-5 sm:p-6 shadow-soft hover:shadow-card transition-all cursor-pointer group flex items-center justify-between gap-4 block overflow-hidden max-w-full"
           >
-            <div className="flex items-center gap-4 sm:gap-5 min-w-0">
+            <div className="flex items-center gap-4 sm:gap-5 min-w-0 flex-1">
               {/* Badge A */}
               <div className="w-10 h-10 rounded-xl bg-ussh-accent text-white flex items-center justify-center font-bold text-base shrink-0 shadow-xs">
                 A
@@ -92,12 +92,12 @@ export function EntertainmentSection() {
                 <img
                   src="/images/docx/image20.png"
                   alt="Bảng rừng chữ Minigame"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full max-w-full max-h-full object-contain block"
                 />
               </div>
 
               {/* Text Info */}
-              <div className="min-w-0">
+              <div className="min-w-0 flex-1">
                 <h3 className="font-bold text-sm sm:text-base text-ussh-navy group-hover:text-ussh-accent transition-colors leading-snug font-sans">
                   Minigame hằng tháng: Thử thách trí tuệ
                 </h3>
@@ -116,10 +116,10 @@ export function EntertainmentSection() {
           <Link
             id="funny"
             href="/phut-thu-gian/chuyen-vui"
-            className="bg-[#F8EFE9] border border-[#E8D8CC] rounded-3xl p-5 sm:p-6 shadow-soft hover:shadow-card transition-all cursor-pointer group flex items-center justify-between gap-4 relative block"
+            className="bg-[#F8EFE9] border border-[#E8D8CC] rounded-3xl p-5 sm:p-6 shadow-soft hover:shadow-card transition-all cursor-pointer group flex items-center justify-between gap-4 relative block overflow-hidden max-w-full"
           >
             <span id="funny-stories" className="scroll-mt-24 absolute top-0 left-0 pointer-events-none" />
-            <div className="flex items-center gap-4 sm:gap-5 min-w-0">
+            <div className="flex items-center gap-4 sm:gap-5 min-w-0 flex-1">
               {/* Badge B */}
               <div className="w-10 h-10 rounded-xl bg-ussh-accent text-white flex items-center justify-center font-bold text-base shrink-0 shadow-xs">
                 B
@@ -131,12 +131,12 @@ export function EntertainmentSection() {
                 <img
                   src="/images/docx/image2.png"
                   alt="Minh họa Góc Funny"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full max-w-full max-h-full object-contain block"
                 />
               </div>
 
               {/* Text Info */}
-              <div className="min-w-0">
+              <div className="min-w-0 flex-1">
                 <h3 className="font-bold text-sm sm:text-base text-ussh-navy group-hover:text-ussh-accent transition-colors leading-snug font-sans">
                   Góc Funny: Những câu chuyện nhỏ trong văn phòng
                 </h3>
