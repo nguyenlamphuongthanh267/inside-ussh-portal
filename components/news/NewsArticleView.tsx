@@ -50,6 +50,88 @@ function renderFormattedCaption(captionText?: string) {
   );
 }
 
+function renderSingleLine(line: string, idx: number) {
+  const isBullet = line.trim().startsWith('•') || line.trim().startsWith('-');
+  const text = isBullet ? line.trim().replace(/^[•\-]\s*/, '') : line;
+
+  // Find bold label if there is a colon (e.g., "Thời gian:", "Địa điểm:", "Link đăng ký tham dự:")
+  const colonIndex = text.indexOf(':');
+  let label = '';
+  let rest = text;
+  if (colonIndex > 0 && colonIndex < 35) {
+    label = text.slice(0, colonIndex + 1);
+    rest = text.slice(colonIndex + 1).trim();
+  }
+
+  // Check for URL in rest (e.g. https://forms.gle/...)
+  const urlMatch = rest.match(/(https?:\/\/[^\s]+)/);
+
+  const content = (
+    <>
+      {label && <strong className="font-bold text-ussh-navy dark:text-white">{label} </strong>}
+      {urlMatch ? (
+        <>
+          <span>{rest.slice(0, urlMatch.index)}</span>
+          <a
+            href={urlMatch[0]}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-ussh-accent dark:text-amber-400 font-semibold underline underline-offset-2 hover:text-red-700 dark:hover:text-amber-300 break-all inline-flex items-center gap-1 transition-colors"
+          >
+            <span>{urlMatch[0]}</span>
+            <ExternalLink className="w-3.5 h-3.5 shrink-0 inline" />
+          </a>
+          <span>{rest.slice((urlMatch.index || 0) + urlMatch[0].length)}</span>
+        </>
+      ) : (
+        <span>{rest}</span>
+      )}
+    </>
+  );
+
+  if (isBullet) {
+    return (
+      <div key={idx} className="flex items-start gap-2.5 text-left leading-relaxed py-0.5">
+        <span className="w-2 h-2 rounded-full bg-ussh-accent dark:bg-amber-400 mt-2 shrink-0" />
+        <span className="flex-1 text-slate-800 dark:text-slate-100">{content}</span>
+      </div>
+    );
+  }
+
+  return (
+    <p key={idx} className="text-left sm:text-justify leading-relaxed">
+      {content}
+    </p>
+  );
+}
+
+function renderArticleParagraph(para: string, key: React.Key) {
+  // If paragraph contains newline characters, split them into separate lines
+  if (para.includes('\n')) {
+    const lines = para.split('\n').filter((l) => l.trim().length > 0);
+    return (
+      <div key={key} className="space-y-2 my-2">
+        {lines.map((line, idx) => renderSingleLine(line, idx))}
+      </div>
+    );
+  }
+
+  // If paragraph is a bullet point starting with • or -
+  if (para.trim().startsWith('•') || para.trim().startsWith('-')) {
+    return (
+      <div key={key} className="my-1.5 pl-1 sm:pl-3">
+        {renderSingleLine(para, 0)}
+      </div>
+    );
+  }
+
+  return (
+    <p key={key} className="text-left sm:text-justify leading-relaxed">
+      {para}
+    </p>
+  );
+}
+
 export function NewsArticleView({ article }: NewsArticleViewProps) {
   const [copied, setCopied] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -181,7 +263,7 @@ export function NewsArticleView({ article }: NewsArticleViewProps) {
         <div className="space-y-5 text-slate-700 dark:text-slate-200 text-[15px] sm:text-base leading-relaxed font-normal">
           {article.contentParagraphs?.map((para, i) => (
             <React.Fragment key={i}>
-              <p className="text-left sm:text-justify leading-relaxed">{para}</p>
+              {renderArticleParagraph(para, i)}
 
               {/* Secondary Image insertion at paragraph 3 */}
               {i === 3 && article.secondaryImage && (

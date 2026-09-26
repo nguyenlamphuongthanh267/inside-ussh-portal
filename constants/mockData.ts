@@ -117,7 +117,10 @@ export const MOCK_NEWS_ARTICLES: NewsArticle[] = [
       'Hội thảo được tổ chức với mục tiêu tạo ra một không gian học thuật đa chiều, liên ngành và giàu tính đối thoại. Các báo cáo và tham luận tại chương trình sẽ tập trung phân tích nhiều vấn đề đương đại thiết thực, bao gồm: sự tương tác giữa AI và văn học, sự hình thành của nghệ thuật số và văn học trong môi trường mạng. Bên cạnh đó, các chuyên gia cũng sẽ thảo luận những chủ đề mang tính ứng dụng cao như nhân văn số, dịch thuật số, công tác lưu trữ, bản đồ hóa, cải biên văn học – điện ảnh, cũng như sự kiến tạo căn tính và ký ức trong không gian số.',
       'Sự kiện lần này không chỉ là dịp để cập nhật các xu hướng nghiên cứu mới nhất, mà còn mở ra cơ hội để đội ngũ giảng viên, cán bộ của Nhà trường giao lưu, trao đổi học thuật và mở rộng mạng lưới hợp tác chuyên môn.',
       'Để công tác tổ chức, đón tiếp và phục vụ Hội thảo được diễn ra chu đáo nhất, Ban tổ chức kính gửi thông tin chi tiết và kính mời toàn thể giảng viên, cán bộ, viên chức quan tâm tiến hành đăng ký tham dự:',
-      '• Thời gian: 08:00 - 16:00, ngày 30/9/2026 (Thứ Tư).\n• Địa điểm: Trường Đại học Khoa học Xã hội và Nhân văn, ĐHQG-HCM (Số 10–12 Đinh Tiên Hoàng, phường Sài Gòn, TP. Hồ Chí Minh).\n• Thời hạn đăng ký: Trước ngày 28/9/2026.\n• Link đăng ký tham dự: https://forms.gle/UgZXFndefxroRbky7',
+      '• Thời gian: 08:00 - 16:00, ngày 30/9/2026 (Thứ Tư).',
+      '• Địa điểm: Trường Đại học Khoa học Xã hội và Nhân văn, ĐHQG-HCM (Số 10–12 Đinh Tiên Hoàng, phường Bến Nghé, Quận 1, TP. Hồ Chí Minh).',
+      '• Thời hạn đăng ký: Trước ngày 28/9/2026.',
+      '• Link đăng ký tham dự: https://forms.gle/UgZXFndefxroRbky7',
       'Khoa Văn học và Ngôn ngữ học trân trọng thông báo và kính mời toàn thể giảng viên, cán bộ, viên chức sắp xếp thời gian tham dự, góp phần tạo nên thành công chung cho diễn đàn học thuật ý nghĩa này.',
     ],
     infoBox: {
