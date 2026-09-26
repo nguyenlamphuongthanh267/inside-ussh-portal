@@ -1,8 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { NewsArticle } from '@/types/news';
+import { MOCK_NEWS_ARTICLES, MOCK_PEOPLE } from '@/constants/mockData';
+import { TagArticlesModal } from './TagArticlesModal';
 import {
   ArrowLeft,
   Share2,
@@ -135,6 +137,26 @@ function renderArticleParagraph(para: string, key: React.Key) {
 export function NewsArticleView({ article }: NewsArticleViewProps) {
   const [copied, setCopied] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeTag, setActiveTag] = useState<string | null>(null);
+
+  // Compute related articles sharing category or tags
+  const relatedNews = useMemo(() => {
+    const others = MOCK_NEWS_ARTICLES.filter((a) => a.slug !== article.slug);
+    const scored = others.map((other) => {
+      let score = 0;
+      if (other.category === article.category) score += 2;
+      const sharedTags = (other.tags || []).filter((t) => (article.tags || []).includes(t));
+      score += sharedTags.length * 3;
+      return {
+        ...other,
+        score,
+        sharedTags,
+      };
+    });
+
+    scored.sort((a, b) => b.score - a.score);
+    return scored;
+  }, [article]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -371,23 +393,155 @@ export function NewsArticleView({ article }: NewsArticleViewProps) {
           </div>
         </div>
 
-        {/* Tags list */}
+        {/* Tags list (Clickable to explore related articles) */}
         {article.tags && article.tags.length > 0 && (
-          <div className="mt-6 pt-5 border-t border-slate-200/60 dark:border-slate-800/60 flex flex-wrap items-center gap-2">
-            <span className="text-xs font-semibold text-slate-400 dark:text-slate-400 inline-flex items-center gap-1">
-              <Tag className="w-3.5 h-3.5" />
-              Chủ đề:
-            </span>
-            {article.tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-transparent dark:border-slate-700 text-xs font-medium rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
-              >
-                #{tag}
+          <div className="mt-6 pt-5 border-t border-slate-200/60 dark:border-slate-800/60">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-xs font-bold text-slate-500 dark:text-slate-400 inline-flex items-center gap-1.5 mr-1">
+                <Tag className="w-3.5 h-3.5 text-ussh-accent dark:text-amber-400" />
+                Chủ đề:
               </span>
-            ))}
+              {article.tags.map((tag) => (
+                <button
+                  key={tag}
+                  type="button"
+                  onClick={() => setActiveTag(tag)}
+                  className="inline-flex items-center gap-1 px-3 py-1.5 bg-red-50/80 hover:bg-ussh-accent text-ussh-accent hover:text-white dark:bg-slate-800 dark:hover:bg-amber-500 dark:text-amber-400 dark:hover:text-slate-950 border border-red-200/80 hover:border-ussh-accent dark:border-slate-700 dark:hover:border-amber-500 text-xs font-bold rounded-xl transition-all cursor-pointer shadow-2xs hover:shadow-xs active:scale-95 group"
+                  title={`Xem các bài viết cùng chủ đề #${tag}`}
+                >
+                  <span>#{tag}</span>
+                  <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100 transition-opacity" />
+                </button>
+              ))}
+            </div>
+            <p className="text-[11px] text-slate-400 dark:text-slate-500 mt-2 italic flex items-center gap-1">
+              <span>💡</span>
+              <span>Nhấp vào từng chủ đề để xem tất cả bài viết và nội dung liên quan trên cổng thông tin.</span>
+            </p>
           </div>
         )}
+
+        {/* ── BÀI VIẾT CÙNG CHỦ ĐỀ & LIÊN QUAN ── */}
+        <section className="mt-12 pt-8 border-t-2 border-slate-100 dark:border-slate-800">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-ussh-accent dark:bg-amber-400" />
+              <h2 className="text-base sm:text-lg font-black text-ussh-navy dark:text-white uppercase tracking-tight font-sans">
+                Bài viết cùng chủ đề &amp; Liên quan
+              </h2>
+            </div>
+            <span className="text-xs text-slate-400 font-medium hidden sm:inline">
+              Chuyên mục Inside USSH
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {relatedNews.map((rel) => (
+              <Link
+                key={rel.id}
+                href={`/tin-tuc/${rel.slug}`}
+                className="group flex flex-col bg-white dark:bg-slate-800/90 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 overflow-hidden shadow-xs hover:shadow-md hover:border-ussh-accent/50 dark:hover:border-amber-400/50 transition-all cursor-pointer"
+              >
+                {/* Thumbnail Image */}
+                <div className="relative aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-900">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={rel.imageUrl}
+                    alt={rel.title}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-2.5 left-2.5">
+                    <span className="px-2.5 py-1 rounded-full text-[10.5px] font-extrabold bg-ussh-navy/90 text-white backdrop-blur-xs">
+                      {rel.categoryName}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Card Content */}
+                <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3">
+                  <div className="space-y-2">
+                    {/* Shared tag hint badge if any */}
+                    {rel.sharedTags && rel.sharedTags.length > 0 && (
+                      <div className="flex flex-wrap gap-1">
+                        {rel.sharedTags.slice(0, 2).map((st) => (
+                          <span
+                            key={st}
+                            className="px-2 py-0.5 rounded-md bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 border border-amber-200/80 dark:border-amber-800 text-[10px] font-bold"
+                          >
+                            Cùng #{st}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white group-hover:text-ussh-accent dark:group-hover:text-amber-400 transition-colors line-clamp-2 leading-snug">
+                      {rel.title}
+                    </h3>
+
+                    <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">
+                      {rel.summary}
+                    </p>
+                  </div>
+
+                  <div className="pt-2.5 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-[11px] text-slate-400 dark:text-slate-500">
+                    <div className="flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5" />
+                      <span>{formatDate(rel.publishDate)}</span>
+                    </div>
+                    <span className="inline-flex items-center gap-1 text-ussh-accent dark:text-amber-400 font-bold group-hover:translate-x-0.5 transition-transform">
+                      Đọc tiếp <ChevronRight className="w-3.5 h-3.5" />
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+
+            {/* Feature "Ký Nhân văn" card */}
+            {MOCK_PEOPLE[0] && (
+              <Link
+                href="/ky-nhan-van/ngo-van-le"
+                className="group flex flex-col bg-gradient-to-br from-amber-50/30 to-white dark:from-slate-800 dark:to-slate-800/80 rounded-2xl border border-amber-200/60 dark:border-slate-700 overflow-hidden shadow-xs hover:shadow-md hover:border-amber-400 transition-all cursor-pointer"
+              >
+                <div className="relative aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-900">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={MOCK_PEOPLE[0].avatarUrl}
+                    alt={MOCK_PEOPLE[0].name}
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-2.5 left-2.5">
+                    <span className="px-2.5 py-1 rounded-full text-[10.5px] font-extrabold bg-amber-600 text-white backdrop-blur-xs">
+                      Ký Nhân văn
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3">
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-1">
+                      <span className="px-2 py-0.5 rounded-md bg-red-50 dark:bg-red-950/40 text-ussh-accent dark:text-amber-400 text-[10px] font-bold border border-red-200/60 dark:border-red-800/40">
+                        Gương sáng Nhân Văn
+                      </span>
+                    </div>
+                    <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white group-hover:text-ussh-accent dark:group-hover:text-amber-400 transition-colors line-clamp-2 leading-snug">
+                      {MOCK_PEOPLE[0].storyTitle}
+                    </h3>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">
+                      {MOCK_PEOPLE[0].sapo}
+                    </p>
+                  </div>
+
+                  <div className="pt-2.5 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-[11px] text-slate-400 dark:text-slate-500">
+                    <span>{MOCK_PEOPLE[0].academicTitle} {MOCK_PEOPLE[0].name}</span>
+                    <span className="inline-flex items-center gap-1 text-ussh-accent dark:text-amber-400 font-bold group-hover:translate-x-0.5 transition-transform">
+                      Khám phá ký sự <ChevronRight className="w-3.5 h-3.5" />
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            )}
+          </div>
+        </section>
 
         {/* Bottom Back Button & Continue Exploring */}
         <div className="mt-12 pt-8 border-t border-slate-200/80 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -416,6 +570,14 @@ export function NewsArticleView({ article }: NewsArticleViewProps) {
             </Link>
           </div>
         </div>
+
+        {/* Tag Articles Modal */}
+        <TagArticlesModal
+          isOpen={Boolean(activeTag)}
+          tag={activeTag || ''}
+          currentSlug={article.slug}
+          onClose={() => setActiveTag(null)}
+        />
       </div>
     </article>
   );

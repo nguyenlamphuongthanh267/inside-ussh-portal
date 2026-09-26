@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { PersonProfile } from '@/types/people';
+import { MOCK_NEWS_ARTICLES } from '@/constants/mockData';
+import { TagArticlesModal } from '../news/TagArticlesModal';
 import {
   ArrowLeft,
   Share2,
@@ -13,7 +15,9 @@ import {
   Award,
   ChevronRight,
   ExternalLink,
+  Tag,
 } from 'lucide-react';
+import { formatDate } from '@/lib/utils';
 
 export interface PersonArticleViewProps {
   person: PersonProfile;
@@ -22,6 +26,7 @@ export interface PersonArticleViewProps {
 export function PersonArticleView({ person }: PersonArticleViewProps) {
   const [copied, setCopied] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeTag, setActiveTag] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -267,6 +272,92 @@ export function PersonArticleView({ person }: PersonArticleViewProps) {
           </div>
         </div>
 
+        {/* Tags list (Clickable) */}
+        <div className="mt-8 pt-5 border-t border-slate-200/60 dark:border-slate-800/60">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-xs font-bold text-slate-500 dark:text-slate-400 inline-flex items-center gap-1.5 mr-1">
+              <Tag className="w-3.5 h-3.5 text-ussh-accent" />
+              Chủ đề:
+            </span>
+            {['Ký Nhân văn', 'GS.TS.NGND Ngô Văn Lệ', 'Truyền thống Nhân Văn', 'Gắn kết nội bộ', 'Lan tỏa yêu thương'].map((tag) => (
+              <button
+                key={tag}
+                type="button"
+                onClick={() => setActiveTag(tag)}
+                className="inline-flex items-center gap-1 px-3 py-1.5 bg-red-50/80 hover:bg-ussh-accent text-ussh-accent hover:text-white border border-red-200/80 hover:border-ussh-accent text-xs font-bold rounded-xl transition-all cursor-pointer shadow-2xs hover:shadow-xs active:scale-95 group"
+                title={`Xem các bài viết cùng chủ đề #${tag}`}
+              >
+                <span>#{tag}</span>
+                <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100 transition-opacity" />
+              </button>
+            ))}
+          </div>
+          <p className="text-[11px] text-slate-400 mt-2 italic flex items-center gap-1">
+            <span>💡</span>
+            <span>Nhấp vào từng chủ đề để xem tất cả bài viết và nội dung liên quan trên cổng thông tin.</span>
+          </p>
+        </div>
+
+        {/* ── BÀI VIẾT CÙNG CHỦ ĐỀ & LIÊN QUAN ── */}
+        <section className="mt-12 pt-8 border-t-2 border-slate-100">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-ussh-accent" />
+              <h2 className="text-base sm:text-lg font-black text-ussh-navy uppercase tracking-tight font-sans">
+                Bài viết cùng chủ đề &amp; Liên quan
+              </h2>
+            </div>
+            <span className="text-xs text-slate-400 font-medium hidden sm:inline">
+              Chuyên mục Inside USSH
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {MOCK_NEWS_ARTICLES.slice(0, 2).map((art) => (
+              <Link
+                key={art.id}
+                href={`/tin-tuc/${art.slug}`}
+                className="group flex flex-col bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-md hover:border-ussh-accent/50 transition-all cursor-pointer"
+              >
+                <div className="relative aspect-video w-full overflow-hidden bg-slate-100">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={art.imageUrl}
+                    alt={art.title}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-2.5 left-2.5">
+                    <span className="px-2.5 py-1 rounded-full text-[10.5px] font-extrabold bg-ussh-navy/90 text-white backdrop-blur-xs">
+                      {art.categoryName}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3">
+                  <div className="space-y-2">
+                    <h3 className="text-sm sm:text-base font-bold text-slate-900 group-hover:text-ussh-accent transition-colors line-clamp-2 leading-snug">
+                      {art.title}
+                    </h3>
+                    <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">
+                      {art.summary}
+                    </p>
+                  </div>
+
+                  <div className="pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+                    <div className="flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5" />
+                      <span>{formatDate(art.publishDate)}</span>
+                    </div>
+                    <span className="inline-flex items-center gap-1 text-ussh-accent font-bold group-hover:translate-x-0.5 transition-transform">
+                      Đọc tiếp <ChevronRight className="w-3.5 h-3.5" />
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         {/* Bottom Back Button & Continue Exploring */}
         <div className="mt-12 pt-8 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
           <Link
@@ -294,6 +385,14 @@ export function PersonArticleView({ person }: PersonArticleViewProps) {
             </Link>
           </div>
         </div>
+
+        {/* Tag Articles Modal */}
+        <TagArticlesModal
+          isOpen={Boolean(activeTag)}
+          tag={activeTag || ''}
+          currentSlug="ky-nhan-van/ngo-van-le"
+          onClose={() => setActiveTag(null)}
+        />
       </div>
     </article>
   );

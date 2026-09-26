@@ -30,7 +30,7 @@ export const MOCK_NEWS_ARTICLES: NewsArticle[] = [
     },
     isFeatured: true,
     isTrending: true,
-    tags: ['Kỷ niệm 70 năm', 'Truyền thống Nhân Văn', 'Khai giảng 2026-2027', 'Triển lãm di sản'],
+    tags: ['Kỷ niệm 70 năm', 'Truyền thống Nhân Văn', 'Khai giảng 2026-2027', 'Triển lãm di sản', 'Gắn kết nội bộ', 'Lan tỏa yêu thương'],
     contentParagraphs: [
       'Sáng 19/9, trong khuôn khổ Lễ khai giảng năm học 2026 - 2027, Trường Đại học Khoa học Xã hội và Nhân văn, ĐHQG-HCM ra mắt chuyên trang 70 năm truyền thống và phát động chuỗi hoạt động hướng đến kỷ niệm 70 năm hình thành và phát triển của Nhà trường.',
       'Phát biểu tại chương trình, TS. Phan Thanh Định, Phó Hiệu trưởng Nhà trường, tuyên bố: “Thay mặt Ban Giám hiệu Nhà trường, tôi kêu gọi toàn thể quý thầy, cô giáo, viên chức, người lao động, người học và toàn thể các bạn sinh viên hãy chung tay tham gia hoạt động kỷ niệm 70 năm với tinh thần chủ động, sáng tạo và trách nhiệm”.',
@@ -82,7 +82,7 @@ export const MOCK_NEWS_ARTICLES: NewsArticle[] = [
       department: '',
     },
     isFeatured: true,
-    tags: ['Hương xôi Nhân văn', 'Chi hội Nữ trí thức', 'Gắn kết nội bộ', 'Lan tỏa yêu thương'],
+    tags: ['Hương xôi Nhân văn', 'Chi hội Nữ trí thức', 'Gắn kết nội bộ', 'Lan tỏa yêu thương', 'Truyền thống Nhân Văn'],
     contentParagraphs: [
       'Nhằm nâng cao đời sống tinh thần giảng viên qua các hoạt động tập thể và tạo không khí ấm áp chào đón tân sinh viên, Chi hội Nữ trí thức Trường Đại học Khoa học Xã hội và Nhân văn, ĐHQG-HCM tiếp tục duy trì chương trình thường niên “Hương xôi Nhân văn”. Không chỉ dừng lại ở hàng ngàn phần quà nghĩa tình gửi đến người học, hoạt động này còn là dịp để đội ngũ cán bộ, giảng viên có thêm những khoảnh khắc gắn kết và niềm vui giản dị ngoài giờ đứng lớp.',
       'Trải qua 4 mùa tựu trường, “Hương xôi Nhân văn” do GS.TS. Ngô Thị Phương Lan (Hiệu trưởng, Chi hội trưởng Chi hội Nữ trí thức) khởi xướng đã trở thành một điểm hẹn quen thuộc của các thành viên Chi hội. Không chỉ gói trọn tình cảm dành cho người học, hoạt động này nay đã trở thành một nét văn hóa gắn kết đồng nghiệp đầy tự hào, tạo nên thương hiệu: “Nhắc đến hộp xôi là nhắc đến Nhân văn”.',
