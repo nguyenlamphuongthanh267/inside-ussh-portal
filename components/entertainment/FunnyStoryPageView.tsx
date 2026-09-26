@@ -52,7 +52,7 @@ export function FunnyStoryPageView() {
     <article className="min-h-screen bg-[#FDFCF9] pb-20">
       {/* Top Breadcrumb & Navigation Bar */}
       <div className="border-b border-ussh-border/70 bg-white/80 backdrop-blur-md sticky top-16 z-30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
           <Link
             href="/#entertainment"
             className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-ussh-navy hover:text-ussh-accent transition-colors group"
@@ -96,9 +96,9 @@ export function FunnyStoryPageView() {
       </div>
 
       {/* Main Content Container */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-6 sm:pt-10">
         {/* Header Badge */}
-        <div className="flex items-center gap-2 mb-4">
+        <div className="flex items-center gap-2 mb-3">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 text-amber-700 text-xs font-bold uppercase tracking-wider">
             <Smile className="w-3.5 h-3.5" />
             Góc Funny • Bản tin nội bộ
@@ -108,12 +108,12 @@ export function FunnyStoryPageView() {
         </div>
 
         {/* Title */}
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-tight text-ussh-navy font-sans leading-tight sm:leading-snug mb-5">
+        <h1 className="text-xl sm:text-2xl md:text-[26px] lg:text-[28px] font-bold tracking-tight text-ussh-navy font-sans leading-snug mb-4">
           {story.title}
         </h1>
 
         {/* Meta Line */}
-        <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-slate-500 pb-6 border-b border-slate-200/80 mb-8">
+        <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-slate-500 pb-5 border-b border-slate-200/80 mb-6">
           <div className="flex items-center gap-1.5">
             <Coffee className="w-3.5 h-3.5 text-amber-600" />
             <span className="text-slate-500">Chuyên mục:</span>
@@ -131,14 +131,14 @@ export function FunnyStoryPageView() {
           </div>
         </div>
 
-        {/* Illustration Image (Full natural aspect ratio, no crop, no zoom) */}
-        <div className="my-8 space-y-2.5">
-          <div className="rounded-3xl overflow-hidden bg-white border border-slate-200/80 shadow-md p-4 sm:p-6 flex items-center justify-center">
+        {/* Illustration Image (Adaptive laptop max-height, no crop, no zoom) */}
+        <div className="my-6 space-y-2">
+          <div className="rounded-2xl overflow-hidden bg-slate-50 border border-slate-200/80 shadow-xs p-2 sm:p-4 flex items-center justify-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={story.imageUrl}
               alt="Minh họa công chức phượt thủ"
-              className="w-full max-w-lg h-auto object-contain block mx-auto rounded-2xl"
+              className="w-auto max-w-full max-h-[340px] sm:max-h-[380px] md:max-h-[420px] object-contain block mx-auto rounded-xl"
             />
           </div>
           <p className="text-xs italic text-slate-500 text-center">
@@ -147,14 +147,14 @@ export function FunnyStoryPageView() {
         </div>
 
         {/* Sapo Lead Block */}
-        <div className="my-8 bg-[#F6ECE4]/80 p-5 sm:p-7 rounded-2xl border-l-4 border-amber-600 shadow-xs">
-          <p className="text-base sm:text-lg font-medium text-slate-800 leading-relaxed italic">
+        <div className="my-6 bg-[#F6ECE4]/80 p-4 sm:p-5 rounded-2xl border-l-4 border-amber-600 shadow-xs">
+          <p className="text-[15px] sm:text-base font-medium text-slate-800 leading-relaxed italic">
             “{story.summary}”
           </p>
         </div>
 
         {/* Story Paragraphs */}
-        <div className="space-y-6 text-slate-700 text-base sm:text-[17px] leading-relaxed font-normal">
+        <div className="space-y-5 text-slate-700 text-[15px] sm:text-base leading-relaxed font-normal">
           {story.paragraphs.map((para, i) => (
             <p key={i} className="text-justify leading-relaxed">
               {para}

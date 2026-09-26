@@ -58,7 +58,7 @@ export function PersonArticleView({ person }: PersonArticleViewProps) {
 
       {/* Top Breadcrumb & Navigation Bar */}
       <div className="border-b border-ussh-border/70 bg-white/80 backdrop-blur-md sticky top-16 z-30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
           <Link
             href="/#people"
             className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-ussh-navy hover:text-ussh-accent transition-colors group"
@@ -90,9 +90,9 @@ export function PersonArticleView({ person }: PersonArticleViewProps) {
       </div>
 
       {/* Main Article Container */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-6 sm:pt-10">
         {/* Category Badge & Breadcrumbs */}
-        <div className="flex items-center gap-2 mb-4">
+        <div className="flex items-center gap-2 mb-3">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-ussh-accent/10 text-ussh-accent text-xs font-bold uppercase tracking-wider">
             <BookOpen className="w-3.5 h-3.5" />
             Ký Nhân văn • Ký chân dung
@@ -102,12 +102,12 @@ export function PersonArticleView({ person }: PersonArticleViewProps) {
         </div>
 
         {/* Article Title */}
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-tight text-ussh-navy font-sans leading-tight sm:leading-snug mb-5">
+        <h1 className="text-xl sm:text-2xl md:text-[26px] lg:text-[28px] font-bold tracking-tight text-ussh-navy font-sans leading-snug mb-4">
           {person.storyTitle || `${person.academicTitle} ${person.name}: Giữ lửa Nhân văn từ những ngày gian khó`}
         </h1>
 
         {/* Author & Meta Line */}
-        <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-slate-500 pb-6 border-b border-slate-200/80 mb-8">
+        <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-slate-500 pb-5 border-b border-slate-200/80 mb-6">
           <div className="flex items-center gap-1.5">
             <span className="text-slate-400 font-normal">Tác giả:</span>
             <strong className="text-ussh-navy font-bold uppercase tracking-wide">
@@ -126,14 +126,14 @@ export function PersonArticleView({ person }: PersonArticleViewProps) {
           </div>
         </div>
 
-        {/* Featured Portrait Hero Image (Full natural aspect ratio, no crop, no zoom) */}
-        <div className="my-8 space-y-2.5">
-          <div className="rounded-3xl overflow-hidden bg-slate-100 border border-slate-200/80 shadow-md">
+        {/* Featured Portrait Hero Image (Adaptive laptop max-height, no crop, no zoom) */}
+        <div className="my-6 space-y-2">
+          <div className="rounded-2xl overflow-hidden bg-slate-50 border border-slate-200/80 shadow-xs flex items-center justify-center p-1 sm:p-2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={person.avatarUrl}
               alt={person.name}
-              className="w-full h-auto object-contain block mx-auto"
+              className="w-auto max-w-full max-h-[380px] sm:max-h-[440px] md:max-h-[480px] object-contain block mx-auto rounded-xl"
             />
           </div>
           <div className="text-xs sm:text-[13px] text-slate-500 text-center font-normal px-2 space-y-1">
@@ -147,25 +147,25 @@ export function PersonArticleView({ person }: PersonArticleViewProps) {
           </div>
         </div>
 
-        {/* Sapo Lead Block (Trang trọng, viền đỏ Nhân văn, font chữ lớn, dễ đọc) */}
+        {/* Sapo Lead Block */}
         {person.sapo && (
-          <div className="my-8 bg-[#F6ECE4]/80 p-5 sm:p-7 rounded-2xl border-l-4 border-ussh-accent shadow-xs">
-            <p className="text-base sm:text-lg font-medium text-slate-800 leading-relaxed">
+          <div className="my-6 bg-[#F6ECE4]/80 p-4 sm:p-5 rounded-2xl border-l-4 border-ussh-accent shadow-xs">
+            <p className="text-[15px] sm:text-base font-medium text-slate-800 leading-relaxed">
               {person.sapo}
             </p>
           </div>
         )}
 
         {/* Article Body Paragraphs with Subheadings */}
-        <div className="space-y-6 text-slate-700 text-base sm:text-[17px] leading-relaxed font-normal">
+        <div className="space-y-5 text-slate-700 text-[15px] sm:text-base leading-relaxed font-normal">
           {person.storyParagraphs?.map((para, i) => {
             // Check if paragraph is a subheading (trung đề)
             if (para.startsWith('## ')) {
               const subheading = para.replace('## ', '');
               return (
-                <div key={i} className="pt-6 pb-2">
-                  <h2 className="text-xl sm:text-2xl font-bold text-ussh-navy uppercase tracking-tight font-sans flex items-center gap-2.5 border-b border-ussh-border pb-2.5">
-                    <span className="w-2 h-5 bg-ussh-accent rounded-full inline-block shrink-0" />
+                <div key={i} className="pt-5 pb-1.5">
+                  <h2 className="text-lg sm:text-xl font-bold text-ussh-navy tracking-tight font-sans flex items-center gap-2.5 border-b border-ussh-border pb-2">
+                    <span className="w-1.5 h-4.5 bg-ussh-accent rounded-full inline-block shrink-0" />
                     <span>{subheading}</span>
                   </h2>
                 </div>
@@ -178,13 +178,13 @@ export function PersonArticleView({ person }: PersonArticleViewProps) {
 
                 {/* Secondary Photo insertion at midpoint */}
                 {i === 4 && person.secondaryImage && (
-                  <div className="my-10 space-y-2.5">
-                    <div className="rounded-3xl overflow-hidden bg-slate-100 border border-slate-200/80 shadow-md">
+                  <div className="my-8 space-y-2">
+                    <div className="rounded-2xl overflow-hidden bg-slate-50 border border-slate-200/80 shadow-xs flex items-center justify-center p-1 sm:p-2">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={person.secondaryImage.url}
                         alt="Tập thể lãnh đạo cán bộ Nhân văn"
-                        className="w-full h-auto object-contain block mx-auto"
+                        className="w-auto max-w-full max-h-[360px] sm:max-h-[420px] md:max-h-[460px] object-contain block mx-auto rounded-xl"
                       />
                     </div>
                     {(() => {

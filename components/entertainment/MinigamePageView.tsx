@@ -22,7 +22,7 @@ export function MinigamePageView() {
     <div className="min-h-screen bg-[#FDFCF9] pb-20">
       {/* Top Breadcrumb & Navigation Bar */}
       <div className="border-b border-ussh-border/70 bg-white/80 backdrop-blur-md sticky top-16 z-30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
           <Link
             href="/#entertainment"
             className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-ussh-navy hover:text-ussh-accent transition-colors group"
@@ -38,9 +38,9 @@ export function MinigamePageView() {
       </div>
 
       {/* Main Content Container */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-6 sm:pt-10">
         {/* Header Badge */}
-        <div className="flex items-center gap-2 mb-4">
+        <div className="flex items-center gap-2 mb-3">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-ussh-accent/10 text-ussh-accent text-xs font-bold uppercase tracking-wider">
             <Gamepad2 className="w-3.5 h-3.5" />
             {game.badge} • THỬ THÁCH TRÍ TUỆ
@@ -50,22 +50,22 @@ export function MinigamePageView() {
         </div>
 
         {/* Title */}
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-tight text-ussh-navy font-sans leading-tight sm:leading-snug mb-3">
+        <h1 className="text-xl sm:text-2xl md:text-[26px] lg:text-[28px] font-bold tracking-tight text-ussh-navy font-sans leading-snug mb-3">
           {game.title}
         </h1>
 
-        <p className="text-sm sm:text-base text-slate-500 pb-6 border-b border-slate-200/80 mb-8 font-medium">
+        <p className="text-xs sm:text-sm text-slate-500 pb-4 border-b border-slate-200/80 mb-6 font-medium">
           Dành cho: <strong className="text-ussh-navy">{game.targetAudience}</strong>
         </p>
 
-        {/* Poster Image (Full natural aspect ratio, no crop, no zoom) */}
-        <div className="my-8 space-y-2.5">
-          <div className="rounded-3xl overflow-hidden bg-white border border-slate-200/80 shadow-md p-2 sm:p-4">
+        {/* Poster Image (Adaptive laptop max-height, full natural aspect ratio, no crop, no zoom) */}
+        <div className="my-6 space-y-2">
+          <div className="rounded-2xl overflow-hidden bg-slate-50 border border-slate-200/80 shadow-xs p-1 sm:p-2 flex items-center justify-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={game.imageUrl}
               alt="Poster Minigame Khoanh chữ tìm dấu ấn Nhân Văn"
-              className="w-full h-auto object-contain block mx-auto rounded-2xl"
+              className="w-auto max-w-full max-h-[380px] sm:max-h-[440px] md:max-h-[480px] object-contain block mx-auto rounded-xl"
             />
           </div>
           <p className="text-xs italic text-slate-500 text-center">
@@ -74,8 +74,8 @@ export function MinigamePageView() {
         </div>
 
         {/* Description intro */}
-        <div className="my-8 bg-[#F6ECE4]/80 p-5 sm:p-7 rounded-2xl border-l-4 border-ussh-accent shadow-xs">
-          <p className="text-base sm:text-lg font-medium text-slate-800 leading-relaxed">
+        <div className="my-6 bg-[#F6ECE4]/80 p-4 sm:p-5 rounded-2xl border-l-4 border-ussh-accent shadow-xs">
+          <p className="text-[15px] sm:text-base font-medium text-slate-800 leading-relaxed">
             {game.description}
           </p>
         </div>

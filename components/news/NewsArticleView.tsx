@@ -89,7 +89,7 @@ export function NewsArticleView({ article }: NewsArticleViewProps) {
 
       {/* Top Breadcrumb & Navigation Bar */}
       <div className="border-b border-ussh-border/70 bg-white/80 backdrop-blur-md sticky top-16 z-30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
           <Link
             href="/#news"
             className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-ussh-navy hover:text-ussh-accent transition-colors group"
@@ -121,9 +121,9 @@ export function NewsArticleView({ article }: NewsArticleViewProps) {
       </div>
 
       {/* Main Article Container */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-6 sm:pt-10">
         {/* Category Badge & Breadcrumbs */}
-        <div className="flex items-center gap-2 mb-4">
+        <div className="flex items-center gap-2 mb-3">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-ussh-accent/10 text-ussh-accent text-xs font-bold uppercase tracking-wider">
             <BookOpen className="w-3.5 h-3.5" />
             {article.categoryName}
@@ -133,12 +133,12 @@ export function NewsArticleView({ article }: NewsArticleViewProps) {
         </div>
 
         {/* Article Title */}
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-tight text-ussh-navy font-sans leading-tight sm:leading-snug mb-5">
+        <h1 className="text-xl sm:text-2xl md:text-[26px] lg:text-[28px] font-bold tracking-tight text-ussh-navy font-sans leading-snug mb-4">
           {article.title}
         </h1>
 
         {/* Author & Meta Line */}
-        <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-slate-500 pb-6 border-b border-slate-200/80 mb-8">
+        <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-slate-500 pb-5 border-b border-slate-200/80 mb-6">
           <div className="flex items-center gap-1.5">
             <span className="text-slate-400 font-normal">Tác giả:</span>
             <strong className="text-ussh-navy font-bold uppercase tracking-wide">
@@ -157,41 +157,41 @@ export function NewsArticleView({ article }: NewsArticleViewProps) {
           </div>
         </div>
 
-        {/* Primary Image (Full uncropped view) */}
-        <div className="my-8 space-y-2.5">
-          <div className="rounded-3xl overflow-hidden bg-slate-100 border border-slate-200/80 shadow-md">
+        {/* Primary Image (Full uncropped view with adaptive laptop max-height) */}
+        <div className="my-6 space-y-2">
+          <div className="rounded-2xl overflow-hidden bg-slate-50 border border-slate-200/80 shadow-xs flex items-center justify-center p-1 sm:p-2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={article.imageUrl}
               alt={article.title}
-              className="w-full h-auto object-contain block mx-auto"
+              className="w-auto max-w-full max-h-[360px] sm:max-h-[420px] md:max-h-[460px] object-contain block mx-auto rounded-xl"
             />
           </div>
           {renderFormattedCaption(article.imageCaption)}
         </div>
 
         {/* Sapo Lead Block */}
-        <div className="my-8 bg-[#F6ECE4]/80 p-5 sm:p-7 rounded-2xl border-l-4 border-ussh-accent shadow-xs">
-          <p className="text-base sm:text-lg font-medium text-slate-800 leading-relaxed">
+        <div className="my-6 bg-[#F6ECE4]/80 p-4 sm:p-5 rounded-2xl border-l-4 border-ussh-accent shadow-xs">
+          <p className="text-[15px] sm:text-base font-medium text-slate-800 leading-relaxed">
             {article.summary}
           </p>
         </div>
 
         {/* Article Body Paragraphs */}
-        <div className="space-y-6 text-slate-700 text-base sm:text-[17px] leading-relaxed font-normal">
+        <div className="space-y-5 text-slate-700 text-[15px] sm:text-base leading-relaxed font-normal">
           {article.contentParagraphs?.map((para, i) => (
             <React.Fragment key={i}>
               <p className="text-justify leading-relaxed">{para}</p>
 
               {/* Secondary Image insertion at paragraph 3 */}
               {i === 3 && article.secondaryImage && (
-                <div className="my-10 space-y-2.5">
-                  <div className="rounded-3xl overflow-hidden bg-slate-100 border border-slate-200/80 shadow-md">
+                <div className="my-8 space-y-2">
+                  <div className="rounded-2xl overflow-hidden bg-slate-50 border border-slate-200/80 shadow-xs flex items-center justify-center p-1 sm:p-2">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={article.secondaryImage.url}
                       alt="Hình ảnh bài viết"
-                      className="w-full h-auto object-contain block mx-auto"
+                      className="w-auto max-w-full max-h-[360px] sm:max-h-[420px] md:max-h-[460px] object-contain block mx-auto rounded-xl"
                     />
                   </div>
                   {renderFormattedCaption(article.secondaryImage.caption)}
