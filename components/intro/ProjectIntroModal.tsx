@@ -173,7 +173,7 @@ export function ProjectIntroModal() {
             onMouseLeave={() => !isMobile && setIsPaused(false)}
             onTouchStart={() => isMobile && setIsPaused(true)}
             onTouchEnd={() => isMobile && setIsPaused(false)}
-            className="relative z-20 w-full sm:w-[520px] sm:mx-4
+            className="relative z-20 w-full sm:w-[550px] sm:mx-4
               bg-white
               rounded-t-2xl sm:rounded-2xl
               shadow-[0_-6px_30px_-4px_rgba(153,0,0,0.2)] sm:shadow-[0_16px_50px_-8px_rgba(153,0,0,0.28)]
@@ -265,23 +265,25 @@ export function ProjectIntroModal() {
                 </div>
 
                 {/* Members list: 1 col on mobile, 2 cols on desktop */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 sm:gap-2">
                   {MEMBERS.map((m, idx) => (
                     <div
                       key={m.mssv}
-                      className={`flex items-center justify-between px-2.5 py-1.5 rounded-lg border bg-slate-50 border-slate-200 ${
+                      className={`flex items-center px-2.5 py-1.5 rounded-lg border bg-slate-50/90 border-slate-200 transition-colors hover:bg-amber-50/40 hover:border-amber-200 ${
                         idx === 4 ? 'sm:col-span-2' : ''
                       }`}
                     >
-                      <div className="flex items-center gap-2 min-w-0 flex-1">
-                        <span className="w-5 h-5 rounded-full bg-ussh-navy text-white text-[10px] font-black flex items-center justify-center shrink-0">
+                      <div className="flex items-center gap-2.5 min-w-0 flex-1">
+                        <span className="w-5 h-5 rounded-full bg-ussh-navy text-white text-[10px] font-black flex items-center justify-center shrink-0 shadow-sm">
                           {idx + 1}
                         </span>
-                        <div className="min-w-0 flex-1 flex items-center justify-between gap-1.5">
-                          <span className="text-[10.5px] font-black text-slate-800 truncate">
+                        <div className="min-w-0 flex-1 flex flex-col justify-center">
+                          <span className="text-[11px] font-black text-slate-800 leading-snug whitespace-nowrap">
                             {m.name}
                           </span>
-                          <span className="text-[9.5px] text-slate-400 font-mono shrink-0">MSSV: {m.mssv}</span>
+                          <span className="text-[9.5px] text-slate-500 font-mono leading-tight mt-0.5">
+                            MSSV: {m.mssv}
+                          </span>
                         </div>
                       </div>
                     </div>
