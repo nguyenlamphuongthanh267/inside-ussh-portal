@@ -22,6 +22,10 @@ export function Footer() {
     href: string
   ) => {
     if (href === '#home') {
+      if (typeof window !== 'undefined' && window.location.pathname !== '/') {
+        window.location.href = '/';
+        return;
+      }
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
       if (window.location.hash) {
@@ -44,6 +48,9 @@ export function Footer() {
           behavior: 'smooth',
         });
         history.pushState(null, '', href);
+      } else {
+        e.preventDefault();
+        window.location.href = `/${href}`;
       }
     }
   };

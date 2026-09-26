@@ -53,4 +53,9 @@ export const newsService = {
     const all = [MOCK_HERO_ARTICLE, ...MOCK_NEWS_ARTICLES];
     return all.find((a) => a.slug === slug) || null;
   },
+
+  getAllArticleSlugs(): string[] {
+    const all = [MOCK_HERO_ARTICLE, ...MOCK_NEWS_ARTICLES];
+    return Array.from(new Set(all.map((a) => a.slug).filter(Boolean)));
+  },
 };

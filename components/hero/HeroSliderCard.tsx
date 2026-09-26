@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { NewsArticle } from '@/types/news';
 import { ArrowRight, Calendar, Clock } from 'lucide-react';
 import { formatDate } from '@/lib/utils';
@@ -10,11 +11,11 @@ export interface HeroSliderCardProps {
   onReadMore?: (article: NewsArticle) => void;
 }
 
-export function HeroSliderCard({ article, onReadMore }: HeroSliderCardProps) {
+export function HeroSliderCard({ article }: HeroSliderCardProps) {
   return (
-    <article
-      onClick={() => onReadMore?.(article)}
-      className="group bg-white rounded-2xl p-3 sm:p-3.5 border border-ussh-border/70 hover:border-ussh-accent/40 shadow-soft hover:shadow-card transition-all duration-300 flex flex-col justify-between cursor-pointer"
+    <Link
+      href={`/tin-tuc/${article.slug}`}
+      className="group bg-white rounded-2xl p-3 sm:p-3.5 border border-ussh-border/70 hover:border-ussh-accent/40 shadow-soft hover:shadow-card transition-all duration-300 flex flex-col justify-between cursor-pointer block"
     >
       <div>
         {/* Image with zoom effect */}
@@ -56,18 +57,12 @@ export function HeroSliderCard({ article, onReadMore }: HeroSliderCardProps) {
         </p>
       </div>
 
-      {/* Button: Đọc thêm -> (matching mockup button style) */}
-      <button
-        type="button"
-        onClick={(e) => {
-          e.stopPropagation();
-          onReadMore?.(article);
-        }}
-        className="inline-flex items-center justify-center gap-1.5 w-full py-1.5 px-3 rounded-lg bg-ussh-accent text-white text-xs font-semibold hover:bg-ussh-accent-hover transition-colors shadow-xs group-hover:shadow-sm"
-      >
-        <span>Đọc thêm</span>
+      {/* Button: Đọc thêm -> */}
+      <div className="inline-flex items-center justify-center gap-1.5 w-full py-1.5 px-3 rounded-lg bg-ussh-accent text-white text-xs font-semibold group-hover:bg-ussh-accent-hover transition-colors shadow-xs">
+        <span>Đọc toàn bài</span>
         <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-      </button>
-    </article>
+      </div>
+    </Link>
   );
 }
+

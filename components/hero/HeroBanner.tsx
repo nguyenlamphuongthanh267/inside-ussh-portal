@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
+import Link from 'next/link';
 import { NewsArticle } from '@/types/news';
 import { PersonProfile } from '@/types/people';
 import { HeroSliderCard } from './HeroSliderCard';
@@ -60,7 +61,7 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
         const person = MOCK_PEOPLE.find((p) => p.id === id);
         if (person) setSelectedPerson(person);
       } else if (type === 'memoir') {
-        setIsMemoirOpen(true);
+        window.location.href = '/ky-nhan-van/ngo-van-le';
       } else if (type === 'minigame') {
         setIsMinigameOpen(true);
       } else if (type === 'funny') {
@@ -131,9 +132,8 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
 
               {/* CTA Button */}
               <div className="mb-4">
-                <button
-                  type="button"
-                  onClick={() => setSelectedArticle(featuredStories[0] || heroArticle)}
+                <Link
+                  href={`/tin-tuc/${heroArticle.slug}`}
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-ussh-navy text-white text-xs sm:text-sm font-semibold hover:bg-ussh-accent hover:shadow-md transition-all group-hover:gap-3 cursor-pointer"
                   title="Nhấp để đọc bài viết mới nhất"
                   aria-label="Đọc bài viết mới nhất"
@@ -141,7 +141,7 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
                   <BookOpen className="w-4 h-4" />
                   <span>Đọc bản tin mới nhất</span>
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </Link>
               </div>
 
               {/* Quick Highlight Stats to fill space seamlessly */}
@@ -162,9 +162,9 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
             </div>
 
             {/* Hero Image - flex-1 expands to fill 100% of remaining space */}
-            <div
-              onClick={() => setSelectedArticle(featuredStories[0] || heroArticle)}
-              className="relative z-10 flex-1 w-full min-h-[180px] sm:min-h-[260px] lg:min-h-[320px] rounded-2xl overflow-hidden shadow-soft border border-white/60 mt-2 sm:mt-3 cursor-pointer group/img"
+            <Link
+              href={`/tin-tuc/${heroArticle.slug}`}
+              className="relative z-10 flex-1 w-full min-h-[180px] sm:min-h-[260px] lg:min-h-[320px] rounded-2xl overflow-hidden shadow-soft border border-white/60 mt-2 sm:mt-3 cursor-pointer group/img block"
               title="Nhấp để đọc bài viết tiêu điểm"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -180,7 +180,7 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
                   ĐHQG-HCM <ArrowRight className="w-3 h-3 group-hover/img:translate-x-1 transition-transform" />
                 </span>
               </div>
-            </div>
+            </Link>
           </div>
 
           {/* ======================================================== */}
@@ -231,11 +231,11 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
                 </div>
               </div>
 
-              {/* Dedicated Featured Portrait Card for Thay Ngo Van Le (Khung ảnh trọn vẹn không bị zoom/cắt) */}
+              {/* Dedicated Featured Portrait Card for Thay Ngo Van Le (Chuyển sang trang đọc bài chuyên sâu) */}
               {featuredLeader && (
-                <div
-                  onClick={() => setIsMemoirOpen(true)}
-                  className="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-soft hover:shadow-card hover:border-ussh-accent/50 transition-all cursor-pointer group flex flex-col sm:flex-row items-center sm:items-stretch gap-4 sm:gap-6"
+                <Link
+                  href="/ky-nhan-van/ngo-van-le"
+                  className="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-soft hover:shadow-card hover:border-ussh-accent/50 transition-all cursor-pointer group flex flex-col sm:flex-row items-center sm:items-stretch gap-4 sm:gap-6 block"
                 >
                   {/* Portrait photo - Khung ảnh chân dung giữ trọn vẹn thần thái của Thầy */}
                   <div className="w-32 h-36 sm:w-40 sm:h-auto rounded-xl overflow-hidden bg-slate-100 border border-slate-200 shrink-0 shadow-2xs group-hover:scale-[1.02] transition-transform duration-300">
@@ -269,12 +269,12 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
                         Tác giả: <strong className="text-slate-600 uppercase">THẢO QUYÊN</strong>
                       </span>
                       <div className="inline-flex items-center gap-1 text-xs font-bold text-ussh-accent group-hover:translate-x-0.5 transition-transform">
-                        <span>Đọc câu chuyện</span>
+                        <span>Đọc toàn bài</span>
                         <ChevronRight className="w-3.5 h-3.5" />
                       </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               )}
             </div>
 
@@ -293,11 +293,11 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
 
               {/* 2 Horizontal Cards matching Mockup */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                {/* Card A: Minigame */}
-                <div
+                {/* Card A: Minigame (Trang riêng chuyên sâu) */}
+                <Link
                   id="minigame"
-                  onClick={() => setIsMinigameOpen(true)}
-                  className="bg-[#F8EFE9] border border-[#E8D8CC] rounded-2xl p-3.5 sm:p-4 shadow-soft hover:shadow-card transition-all cursor-pointer group flex items-center justify-between gap-3"
+                  href="/phut-thu-gian/minigame"
+                  className="bg-[#F8EFE9] border border-[#E8D8CC] rounded-2xl p-3.5 sm:p-4 shadow-soft hover:shadow-card transition-all cursor-pointer group flex items-center justify-between gap-3 block"
                 >
                   <div className="flex items-center gap-3 min-w-0">
                     {/* Badge A */}
@@ -329,13 +329,13 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
                       </div>
                     </div>
                   </div>
-                </div>
+                </Link>
 
-                {/* Card B: Góc Funny */}
-                <div
+                {/* Card B: Góc Funny (Trang riêng chuyên sâu) */}
+                <Link
                   id="funny"
-                  onClick={() => setIsFunnyOpen(true)}
-                  className="bg-[#F8EFE9] border border-[#E8D8CC] rounded-2xl p-3.5 sm:p-4 shadow-soft hover:shadow-card transition-all cursor-pointer group flex items-center justify-between gap-3 relative"
+                  href="/phut-thu-gian/chuyen-vui"
+                  className="bg-[#F8EFE9] border border-[#E8D8CC] rounded-2xl p-3.5 sm:p-4 shadow-soft hover:shadow-card transition-all cursor-pointer group flex items-center justify-between gap-3 relative block"
                 >
                   <span id="funny-stories" className="scroll-mt-24 absolute top-0 left-0 pointer-events-none" />
                   <div className="flex items-center gap-3 min-w-0">
@@ -368,7 +368,7 @@ export function HeroBanner({ heroArticle, featuredStories }: HeroBannerProps) {
                       </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               </div>
             </div>
           </div>

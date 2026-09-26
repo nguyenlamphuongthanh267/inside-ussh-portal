@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import {
   Gamepad2,
   Smile,
@@ -74,10 +75,10 @@ export function EntertainmentSection() {
         {/* 2 Main Cards Grid matching Mockup */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
           {/* Card A: Minigame */}
-          <div
+          <Link
             id="minigame"
-            onClick={() => setIsMinigameOpen(true)}
-            className="bg-[#F8EFE9] border border-[#E8D8CC] rounded-3xl p-5 sm:p-6 shadow-soft hover:shadow-card transition-all cursor-pointer group flex items-center justify-between gap-4"
+            href="/phut-thu-gian/minigame"
+            className="bg-[#F8EFE9] border border-[#E8D8CC] rounded-3xl p-5 sm:p-6 shadow-soft hover:shadow-card transition-all cursor-pointer group flex items-center justify-between gap-4 block"
           >
             <div className="flex items-center gap-4 sm:gap-5 min-w-0">
               {/* Badge A */}
@@ -89,7 +90,7 @@ export function EntertainmentSection() {
               <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white border border-slate-200/80 p-1.5 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/docx/image2.png"
+                  src="/images/docx/image20.png"
                   alt="Bảng rừng chữ Minigame"
                   className="w-full h-full object-contain"
                 />
@@ -109,13 +110,13 @@ export function EntertainmentSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
 
           {/* Card B: Góc Funny */}
-          <div
+          <Link
             id="funny"
-            onClick={() => setIsFunnyOpen(true)}
-            className="bg-[#F8EFE9] border border-[#E8D8CC] rounded-3xl p-5 sm:p-6 shadow-soft hover:shadow-card transition-all cursor-pointer group flex items-center justify-between gap-4 relative"
+            href="/phut-thu-gian/chuyen-vui"
+            className="bg-[#F8EFE9] border border-[#E8D8CC] rounded-3xl p-5 sm:p-6 shadow-soft hover:shadow-card transition-all cursor-pointer group flex items-center justify-between gap-4 relative block"
           >
             <span id="funny-stories" className="scroll-mt-24 absolute top-0 left-0 pointer-events-none" />
             <div className="flex items-center gap-4 sm:gap-5 min-w-0">
@@ -148,7 +149,7 @@ export function EntertainmentSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
 

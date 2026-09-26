@@ -31,6 +31,10 @@ export function MobileMenu({ isOpen, onClose, activeSection }: MobileMenuProps) 
 
   const handleSelectSearchResult = (item: SearchResultItem) => {
     onClose();
+    if (item.routeUrl) {
+      window.location.href = item.routeUrl;
+      return;
+    }
     setTimeout(() => {
       const targetElement = document.getElementById(item.targetId);
       if (targetElement) {
@@ -61,6 +65,10 @@ export function MobileMenu({ isOpen, onClose, activeSection }: MobileMenuProps) 
 
   const handleSelectSuggestion = (sug: PopularSuggestion) => {
     onClose();
+    if (sug.routeUrl) {
+      window.location.href = sug.routeUrl;
+      return;
+    }
     setTimeout(() => {
       const targetElement = document.getElementById(sug.targetId);
       if (targetElement) {
@@ -99,6 +107,10 @@ export function MobileMenu({ isOpen, onClose, activeSection }: MobileMenuProps) 
     // Small delay to allow the mobile drawer to close before scrolling
     setTimeout(() => {
       if (href === '#home') {
+        if (typeof window !== 'undefined' && window.location.pathname !== '/') {
+          window.location.href = '/';
+          return;
+        }
         window.scrollTo({ top: 0, behavior: 'smooth' });
         if (window.location.hash) {
           history.pushState(null, '', window.location.pathname);
@@ -119,6 +131,8 @@ export function MobileMenu({ isOpen, onClose, activeSection }: MobileMenuProps) 
             behavior: 'smooth',
           });
           history.pushState(null, '', href);
+        } else {
+          window.location.href = `/${href}`;
         }
       }
     }, 120);

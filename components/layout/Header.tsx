@@ -61,6 +61,12 @@ export function Header() {
   const handleSelectSuggestion = (sug: PopularSuggestion) => {
     setSearchOpen(false);
     setSearchQuery('');
+
+    if (sug.routeUrl) {
+      window.location.href = sug.routeUrl;
+      return;
+    }
+
     handleNavigateSection(sug.targetId);
 
     if (sug.actionType !== 'scroll') {
@@ -81,6 +87,12 @@ export function Header() {
   const handleSelectSearchResult = (item: SearchResultItem) => {
     setSearchOpen(false);
     setSearchQuery('');
+
+    if (item.routeUrl) {
+      window.location.href = item.routeUrl;
+      return;
+    }
+
     handleNavigateSection(item.targetId);
 
     if (item.actionType !== 'scroll') {
@@ -103,6 +115,10 @@ export function Header() {
     href: string
   ) => {
     if (href === '#home') {
+      if (typeof window !== 'undefined' && window.location.pathname !== '/') {
+        window.location.href = '/';
+        return;
+      }
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
       setActiveSection('home');
@@ -127,6 +143,9 @@ export function Header() {
         });
         history.pushState(null, '', href);
         setActiveSection(targetId);
+      } else {
+        e.preventDefault();
+        window.location.href = `/${href}`;
       }
     }
   };

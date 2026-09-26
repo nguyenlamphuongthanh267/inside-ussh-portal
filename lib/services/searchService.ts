@@ -15,6 +15,7 @@ export interface SearchResultItem {
   actionType: 'open-article' | 'open-profile' | 'open-memoir' | 'open-gallery' | 'open-minigame' | 'open-funny' | 'scroll';
   targetId: string;
   modalId?: string;
+  routeUrl?: string;
 }
 
 export interface PopularSuggestion {
@@ -22,6 +23,7 @@ export interface PopularSuggestion {
   targetId: string;
   actionType: 'open-article' | 'open-profile' | 'open-memoir' | 'open-gallery' | 'open-minigame' | 'open-funny' | 'scroll';
   modalId?: string;
+  routeUrl?: string;
   badgeLabel?: string;
 }
 
@@ -31,6 +33,7 @@ export const POPULAR_SUGGESTIONS: PopularSuggestion[] = [
     targetId: 'news',
     actionType: 'open-article',
     modalId: 'news_70_nam',
+    routeUrl: '/tin-tuc/phat-dong-chuoi-su-kien-ky-niem-70-nam-hinh-thanh-va-phat-trien-nha-truong',
     badgeLabel: 'Tin tức',
   },
   {
@@ -38,6 +41,7 @@ export const POPULAR_SUGGESTIONS: PopularSuggestion[] = [
     targetId: 'news',
     actionType: 'open-article',
     modalId: 'news_huong_xoi',
+    routeUrl: '/tin-tuc/huong-xoi-nhan-van-trao-am-ap-nhan-niem-vui',
     badgeLabel: 'Tin tức',
   },
   {
@@ -45,6 +49,7 @@ export const POPULAR_SUGGESTIONS: PopularSuggestion[] = [
     targetId: 'people',
     actionType: 'open-memoir',
     modalId: 'ppl_ngo_van_le',
+    routeUrl: '/ky-nhan-van/ngo-van-le',
     badgeLabel: 'Ký Nhân văn',
   },
   {
@@ -52,12 +57,14 @@ export const POPULAR_SUGGESTIONS: PopularSuggestion[] = [
     targetId: 'news',
     actionType: 'open-article',
     modalId: 'news_hoi_thao_van_hoc',
+    routeUrl: '/tin-tuc/dang-ky-tham-du-hoi-thao-khoa-hoc-quoc-te-van-hoc-nghe-thuat-chau-a-trong-boi-canh-so-hoa',
     badgeLabel: 'Hội thảo',
   },
   {
     keyword: 'Minigame hằng tháng',
     targetId: 'entertainment',
     actionType: 'open-minigame',
+    routeUrl: '/phut-thu-gian/minigame',
     badgeLabel: 'Minigame',
   },
   {
@@ -70,6 +77,7 @@ export const POPULAR_SUGGESTIONS: PopularSuggestion[] = [
     keyword: 'Sáng Quận 1 chiều Thủ Đức',
     targetId: 'entertainment',
     actionType: 'open-funny',
+    routeUrl: '/phut-thu-gian/chuyen-vui',
     badgeLabel: 'Góc Funny',
   },
 ];
@@ -122,6 +130,7 @@ export function searchAll(query: string, category: SearchCategoryFilter = 'all')
           actionType: 'open-article',
           targetId: 'news',
           modalId: art.id,
+          routeUrl: art.slug ? `/tin-tuc/${art.slug}` : undefined,
         });
       }
     }
@@ -150,6 +159,7 @@ export function searchAll(query: string, category: SearchCategoryFilter = 'all')
           actionType: p.storyParagraphs ? 'open-memoir' : 'open-profile',
           targetId: 'people',
           modalId: p.id,
+          routeUrl: p.id === 'ppl_ngo_van_le' ? '/ky-nhan-van/ngo-van-le' : undefined,
         });
       }
     }
@@ -248,6 +258,7 @@ export function searchAll(query: string, category: SearchCategoryFilter = 'all')
         dateOrMeta: 'Giải Nhất 1.000.000 đồng • Dành cho CB-GV',
         actionType: 'open-minigame',
         targetId: 'entertainment',
+        routeUrl: '/phut-thu-gian/minigame',
       });
     }
 
@@ -269,6 +280,7 @@ export function searchAll(query: string, category: SearchCategoryFilter = 'all')
         dateOrMeta: 'Tiếng cười sau giờ lên lớp • Góc nhìn hài hước',
         actionType: 'open-funny',
         targetId: 'entertainment',
+        routeUrl: '/phut-thu-gian/chuyen-vui',
       });
     }
   }
