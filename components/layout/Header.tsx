@@ -232,21 +232,21 @@ export function Header() {
     <header
       className={`sticky top-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-soft py-2.5 border-b border-slate-200/80'
-          : 'bg-ussh-cream-100 py-3.5 border-b border-ussh-border'
+          ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-soft py-2 sm:py-2.5 border-b border-slate-200/80 dark:border-slate-800'
+          : 'bg-ussh-cream-100 dark:bg-slate-900 py-2.5 sm:py-3.5 border-b border-ussh-border dark:border-slate-800'
       }`}
     >
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-2 xl:gap-3">
+      <div className="max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between gap-2 xl:gap-3">
           {/* Brand Logo & Wordmark */}
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, '#home')}
-            className="flex items-center gap-2.5 sm:gap-3 shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ussh-navy rounded-xl p-0.5"
+            className="flex items-center gap-2 sm:gap-2.5 shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ussh-navy rounded-xl p-0.5"
             aria-label="Inside USSH - Về trang chủ"
           >
             {/* USSH Official Logo */}
-            <div className="relative w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+            <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/ussh-logo.png"
@@ -256,10 +256,10 @@ export function Header() {
             </div>
 
             <div className="flex flex-col shrink-0">
-              <span className="text-base sm:text-lg font-black tracking-tight text-ussh-navy leading-none group-hover:text-ussh-accent transition-colors whitespace-nowrap">
+              <span className="text-[15px] sm:text-lg font-black tracking-tight text-ussh-navy dark:text-white leading-none group-hover:text-ussh-accent transition-colors whitespace-nowrap">
                 Inside USSH
               </span>
-              <span className="text-[10.5px] sm:text-xs text-slate-500 font-bold tracking-wide mt-1 whitespace-nowrap">
+              <span className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 font-bold tracking-wide mt-0.5 sm:mt-1 whitespace-nowrap">
                 Bản tin nội bộ
               </span>
             </div>
@@ -365,8 +365,8 @@ export function Header() {
             })}
           </nav>
 
-          <div className="flex items-center gap-2 xl:gap-3 shrink-0">
-            {/* Search Input on taskbar with real-time dropdown matching mockup */}
+          <div className="flex items-center gap-1 sm:gap-2 xl:gap-3 shrink-0">
+            {/* Search Input on taskbar with real-time dropdown matching mockup (desktop) */}
             <div className="hidden md:flex items-center relative" ref={searchRef}>
               <div className="relative flex items-center">
                 <input
@@ -413,16 +413,26 @@ export function Header() {
               />
             </div>
 
+            {/* Mobile Search Button */}
+            <button
+              onClick={() => setMobileMenuOpen(true)}
+              className="w-9 h-9 text-slate-700 dark:text-slate-300 hover:text-ussh-navy dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 rounded-full md:hidden transition-colors flex items-center justify-center shrink-0"
+              aria-label="Tìm kiếm nội dung"
+              title="Tìm kiếm"
+            >
+              <Search className="w-4.5 h-4.5" />
+            </button>
+
             {/* Notification Bell with Badge */}
-            <div className="relative shrink-0" ref={notifRef}>
+            <div className="relative shrink-0 flex items-center" ref={notifRef}>
               <button
                 onClick={() => setNotifOpen(!notifOpen)}
-                className="relative p-2 text-slate-700 dark:text-slate-300 hover:text-ussh-navy dark:hover:text-white hover:bg-white/70 dark:hover:bg-slate-800 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ussh-navy cursor-pointer"
+                className="relative w-9 h-9 text-slate-700 dark:text-slate-300 hover:text-ussh-navy dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ussh-navy cursor-pointer flex items-center justify-center shrink-0"
                 aria-label={isNotifRead ? 'Thông báo nội bộ' : 'Xem 3 thông báo mới'}
               >
-                <Bell className="w-5 h-5" />
+                <Bell className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
                 {!isNotifRead && (
-                  <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-red-600 rounded-full ring-2 ring-white dark:ring-slate-900 animate-pulse" />
+                  <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-600 rounded-full ring-2 ring-white dark:ring-slate-900 animate-pulse" />
                 )}
               </button>
 
@@ -475,18 +485,18 @@ export function Header() {
             </div>
 
             {/* Day / Night Theme Toggle */}
-            <div className="hidden sm:block shrink-0">
+            <div className="shrink-0 flex items-center">
               <HighContrastToggle />
             </div>
 
-            {/* User Avatar with Profile Greeting */}
+            {/* User Avatar with Profile Greeting (tablet / desktop) */}
             <div className="hidden sm:flex items-center gap-2.5 pl-2.5 xl:pl-3 border-l border-slate-300 dark:border-slate-700 shrink-0">
               <div className="relative shrink-0">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={CURRENT_USER.avatarUrl}
                   alt={CURRENT_USER.name}
-                  className="w-9 h-9 rounded-full object-cover border border-rose-200/90 dark:border-slate-700 shadow-sm bg-rose-50/80 shrink-0"
+                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full object-cover border border-rose-200/90 dark:border-slate-700 shadow-sm bg-rose-50/80 shrink-0"
                 />
               </div>
               <div className="text-left hidden lg:flex lg:flex-col justify-center max-w-[110px] xl:max-w-[160px]">
@@ -507,10 +517,10 @@ export function Header() {
             {/* Mobile Hamburger Toggle */}
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="p-2 text-slate-700 dark:text-slate-300 hover:text-ussh-navy dark:hover:text-white hover:bg-white/70 dark:hover:bg-slate-800 rounded-xl lg:hidden transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ussh-navy"
+              className="w-9 h-9 text-slate-700 dark:text-slate-300 hover:text-ussh-navy dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 rounded-full lg:hidden transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ussh-navy flex items-center justify-center shrink-0"
               aria-label="Mở menu di động"
             >
-              <Menu className="w-6 h-6" />
+              <Menu className="w-5 h-5" />
             </button>
           </div>
         </div>

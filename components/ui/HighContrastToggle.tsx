@@ -31,7 +31,7 @@ export function HighContrastToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+      className={`inline-flex items-center justify-center gap-1.5 w-9 h-9 sm:w-auto sm:px-3 sm:py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer shrink-0 ${
         isDarkMode
           ? 'bg-slate-800 text-amber-300 border border-slate-700 hover:bg-slate-700 shadow-sm'
           : 'bg-white/90 text-slate-700 border border-slate-300/80 hover:bg-white hover:text-ussh-navy shadow-2xs'
@@ -41,13 +41,13 @@ export function HighContrastToggle() {
     >
       {isDarkMode ? (
         <>
-          <Sun className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-          <span>Ngày</span>
+          <Sun className="w-4 h-4 text-amber-400 shrink-0" />
+          <span className="hidden sm:inline">Ngày</span>
         </>
       ) : (
         <>
-          <Moon className="w-3.5 h-3.5 text-slate-600 shrink-0" />
-          <span>Đêm</span>
+          <Moon className="w-4 h-4 text-slate-600 shrink-0" />
+          <span className="hidden sm:inline">Đêm</span>
         </>
       )}
     </button>
